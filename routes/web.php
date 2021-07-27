@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/login', 'Auth\AuthController@form')->name('login');
+Route::post('/login', 'Auth\AuthController@login');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', function () {
