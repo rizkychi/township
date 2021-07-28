@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'Auth\AuthController@form')->name('login');
-Route::post('/login', 'Auth\AuthController@login');
+Route::post('/login', 'Auth\AuthController@login')->name('doLogin');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', function () {

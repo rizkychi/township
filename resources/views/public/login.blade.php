@@ -13,7 +13,8 @@
           <div class="text-center text-muted mb-4">
             Sign in with credentials
           </div>
-          <form role="form">
+          <form role="form" action="{{ route('doLogin') }}" method="post">
+            @csrf
             <div class="form-group mb-3">
               <div class="input-group input-group-merge input-group-alternative">
                 <div class="input-group-prepend">

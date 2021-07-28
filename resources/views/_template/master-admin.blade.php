@@ -33,6 +33,7 @@
 </head>
 
 <body>
+@include('sweetalert::alert')
   <!-- Sidenav -->
   <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
@@ -128,7 +129,7 @@
                   </li>
                   <li class="nav-item">
                     <a href="#navbar-multilevel" class="nav-link" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-multilevel">Multi level</a>
-                    <div class="collapse show" id="navbar-multilevel" style="">
+                    <div class="collapse show" id="navbar-multilevel">
                       <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
                           <a href="#!" class="nav-link ">Third level menu</a>
