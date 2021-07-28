@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Validator;
 
 class AuthController extends Controller
 {
@@ -43,8 +42,13 @@ class AuthController extends Controller
             return redirect()->route('admin.home');
         } else {
             //Login Fail
-            Session::flash('error', 'username atau password salah');
-            return back()->withInput($request->all);
+            return back()->with('errors', 'Wrong username or password');
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

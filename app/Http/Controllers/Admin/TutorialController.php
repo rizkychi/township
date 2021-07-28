@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class TutorialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        return view('admin.tutorial.all');
     }
 
     /**
