@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeginTable extends Migration
+class CreateTutorialTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateForeginTable extends Migration
      */
     public function up()
     {
-        Schema::table('township', function (Blueprint $table) {
-            $table->foreign('type_id')->references('id')->on('type')->onDelete('set null');
+        Schema::create('tutorial', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('desc');
+            $table->string('url_video');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +29,6 @@ class CreateForeginTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foregin');
+        Schema::dropIfExists('tutorial');
     }
 }

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use DataTables;
+
+use App\Models\Code;
+
 class CodeController extends Controller
 {
     /**
@@ -81,5 +85,52 @@ class CodeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // Display list in json
+    public function json(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Code::all();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    // '<a href="'.route('jabatan.show.edit', ['show' => $row->id]).'" class="btn-sm btn-success mx-1"><i class="fas fa-pen"></i></a>
+                    //         <a href="" data-url="'.route('jabatan.delete', ['id' => $row->id]).'" data-text="Jabatan" class="btn-sm btn-danger mx-1" onclick="deleteConfirm(event, this)"><i class="fas fa-trash"></i></a>';
+                    return '-';
+                })
+                ->addColumn('image', function($row){
+                    $image = $row->image_url ?? '';
+                    return $image;
+                })
+                ->addColumn('work', function($row){
+                    $work = $row->worked;
+                    if ($work) {
+                        $label = 'success';
+                        $text = 'Worked';
+                    } else {
+                        $label = 'warning';
+                        $text = 'Not Worked';
+                    }
+                    return '<span class="badge badge-sm badge-'.$label.'">'.$text.'</span>';
+                })
+                ->addColumn('type', function($row){
+                    $type = $row->type->name ?? '-';
+                    return $type;
+                })
+                ->rawColumns(['action', 'work', 'image'])
+                ->make(true);
+        }
+    }
+
+    // Delete data
+    public function delete($id)
+    {
+        $code = Code::findOrFail($id);
+        if ($code->delete()) {
+            return back()->with('success', 'Deleted');
+        } else {
+            return back()->with('errors', 'Something went wrong!');
+        }
     }
 }

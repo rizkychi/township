@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTownshipTable extends Migration
+class CreateCodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTownshipTable extends Migration
      */
     public function up()
     {
-        Schema::create('township', function (Blueprint $table) {
+        Schema::create('code', function (Blueprint $table) {
             $table->id();
             $table->string('codename')->unique();
             $table->string('alias')->nullable();
             $table->string('value');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->boolean('worked');
             $table->integer('type_id')->unsigned()->nullable();
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateTownshipTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('township');
+        Schema::dropIfExists('code');
     }
 }

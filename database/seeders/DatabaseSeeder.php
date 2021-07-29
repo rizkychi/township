@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Skin'],
             ['name' => 'Decoration'],
             ['name' => 'Coupon'],
+            ['name' => 'Avatar'],
             ['name' => 'Other']
         ]);
 

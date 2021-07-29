@@ -27,8 +27,21 @@
   <!-- Icons -->
   <!-- <link rel="stylesheet" href="{{ asset('/src/fonts/nucleo/css/nucleo.css') }}" type="text/css"> -->
   <link rel="stylesheet" href="{{ asset('/src/fonts/fontawesome/all.min.css') }}" type="text/css">
+  <!-- Page plugins -->
+  <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('/src/css/argon.min.css') }}" type="text/css">
+
+  <style>
+    td {
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 
 <body>
@@ -132,11 +145,11 @@
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
                 <a href="#!" class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
+                  <i class="fas fa-key"></i>
                   <span>Change Password</span>
                 </a>
                 <a href="{{ route('admin.logout') }}" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
+                  <i class="fas fa-sign-out-alt"></i>
                   <span>Logout</span>
                 </a>
               </div>
@@ -187,8 +200,27 @@
   <script src="{{ asset('/src/js/chart.js/dist/Chart.min.js') }}"></script>
   <script src="{{ asset('/src/js/chart.js/dist/Chart.extension.js') }}"></script>
 
+  <!-- Optional JS -->
+  <script src="{{ asset('/src/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+  <script src="{{ asset('/src/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+
   <!-- Argon JS -->
   <script src="{{ asset('/src/js/argon.min.js') }}"></script>
+
+  @stack('scripts')
+
+  <!-- Custom JS -->
+  <script>
+    $('.dtx').on( 'init.dt', function () {
+			$('div.dataTables_length select').removeClass('custom-select custom-select-sm');
+    });
+  </script>
 </body>
 
 </html>

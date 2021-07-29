@@ -95,7 +95,7 @@
         </div>
     </div>
 </div>
-@endSection
+@endsection
 
 @section('content')
 <div class="row">
@@ -1352,4 +1352,4 @@
         </div>
     </div>
 </div>
-@endSection
+@endsection
