@@ -15,6 +15,12 @@ class Code extends Model
         'worked' => 'boolean',
     ];
 
+    public $status_list = [
+        'submitted',
+        'approved',
+        'rejected'
+    ];
+
     public function type()
     {
         return $this->belongsTo(Type::class, 'type_id', 'id');

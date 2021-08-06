@@ -19,7 +19,7 @@
             </p>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a href="#!" class="btn btn-sm btn-primary">
+            <a href="{{ route('code.show.create') }}" class="btn btn-sm btn-primary">
               <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
             </a>
           </div>

@@ -21,6 +21,9 @@ class CreateCodeTable extends Migration
             $table->string('image_url')->nullable();
             $table->boolean('worked');
             $table->integer('type_id')->unsigned()->nullable();
+            $table->string('status');
+            $table->string('credits')->nullable();
+            $table->string('credits_url')->nullable();
             $table->timestamps();
         });
     }

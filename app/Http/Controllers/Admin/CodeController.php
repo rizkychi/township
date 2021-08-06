@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use DataTables;
 
 use App\Models\Code;
+use App\Models\Type;
 
 class CodeController extends Controller
 {
@@ -28,7 +29,17 @@ class CodeController extends Controller
      */
     public function create()
     {
-        //
+        $type = Type::all();
+        
+        $code = new Code();
+        $status = $code->status_list;
+
+        $data = [
+            'type' => $type,
+            'status' => $status
+        ];
+        
+        return view('admin.code.add')->with('data', $data);
     }
 
     /**
@@ -39,7 +50,26 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exist = Code::where('codename', $request->codename)->first();
+        if ($exist) {
+            return back()->withInput()->with('errors', 'Codename already exists');
+        }
+
+        $code = new Code();
+        $code->codename = $request->codename;
+        $code->alias = $request->alias;
+        $code->value = $request->val;
+        $code->status = $request->status;
+        $code->type_id = $request->type;
+        $code->credits = $request->credits;
+        $code->credits_url = $request->credits_url;
+        $code->worked = $request->worked == 'on' ? true:false;
+
+        if ($code->save()) {
+            return redirect()->route('code.show.index')->with('success', 'New code has been added');
+        } else {
+            return back()->withInput()->with('errors', 'Something went wrong');
+        }
     }
 
     /**
