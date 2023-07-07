@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // Dummy admin
         DB::table('users')->insert([
-            ['username' => 'admints', 'password' => bcrypt('township'), 'email' => 'admin@admin.com']
+            ['username' => 'admints', 'password' => bcrypt('jogmatis'), 'email' => 'admin@admin.com']
         ]);
 
         // Dummy type

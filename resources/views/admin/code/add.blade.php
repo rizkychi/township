@@ -80,13 +80,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="credits">Credits</label>
-                <input type="text" name="credits" class="form-control" id="credits" placeholder="example: Township Code">
+                <input type="text" name="credits" class="form-control" id="credits" placeholder="example: Jogmatis Code">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="creditsUrl">Link</label>
-                <input type="url" name="credits_url" class="form-control" id="creditsUrl" placeholder="example: Township.masrizky.com">
+                <input type="url" name="credits_url" class="form-control" id="creditsUrl" placeholder="example: Jogmatis.masrizky.com">
               </div>
             </div>
           </div>

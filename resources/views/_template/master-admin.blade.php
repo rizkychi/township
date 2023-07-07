@@ -17,9 +17,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Township code for Skin, Decoratio, Coupon, and Others">
-  <meta name="author" content="Township Code">
-  <title>@yield('page_title') | Township Code</title>
+  <meta name="description" content="Jogmatis code for Skin, Decoratio, Coupon, and Others">
+  <meta name="author" content="Jogmatis Code">
+  <title>@yield('page_title') | Jogmatis Code</title>
   <!-- Favicon -->
   <!-- <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png"> -->
   <!-- Fonts -->
@@ -52,7 +52,7 @@
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="{{ route('admin.home') }}">
-          <img src="{{ asset('/src/img/logo.png') }}" class="navbar-brand-img" alt="Township Code">
+          <img src="{{ asset('/src/img/logo.png') }}" class="navbar-brand-img" alt="Jogmatis Code">
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
@@ -181,7 +181,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-lg-6">
             <div class="copyright text-center text-muted">
-              &copy; 2020 <a href="{{ route('home') }}" class="font-weight-bold ml-1" target="_blank">Township Code</a>
+              &copy; 2020 <a href="{{ route('home') }}" class="font-weight-bold ml-1" target="_blank">Jogmatis Code</a>
             </div>
           </div>
         </div>

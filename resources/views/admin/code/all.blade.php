@@ -15,7 +15,7 @@
           <div class="col-8">
             <h3 class="mb-0">Code List</h3>
             <p class="text-sm mb-0">
-              List for all code that can be used to get item in Township.
+              List for all code that can be used to get item in Jogmatis.
             </p>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
