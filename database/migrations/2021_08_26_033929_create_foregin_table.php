@@ -13,9 +13,7 @@ class CreateForeginTable extends Migration
      */
     public function up()
     {
-        Schema::table('code', function (Blueprint $table) {
-            $table->foreign('type_id')->references('id')->on('type')->onDelete('set null');
-        });
+        
     }
 
     /**

@@ -25,24 +25,11 @@ Route::middleware('web')->group(function () {
         Route::get('/', 'Admin\HomeController@index')->name('admin.home');
         Route::get('/logout', 'Auth\AuthController@logout')->name('admin.logout');
 
-        // Code List
-        Route::prefix('/code')->group(function () {
-            Route::get('/', function () {
-                return redirect()->route('code.show.index');
-            });
-            Route::get('/json', 'Admin\CodeController@json')->name('code.json');
-            Route::get('/{id}/delete', 'Admin\CodeController@delete')->name('code.delete');
-            Route::resource('/show', 'Admin\CodeController', ['as' => 'code'])->except(['destroy']);
+        // Anggota
+        Route::prefix('anggota')->group(function () {
+            Route::get('json', 'Admin\AnggotaController@json')->name('admin.anggota.json');
+            Route::get('{anggota}/delete', 'Admin\AnggotaController@delete')->name('admin.anggota.delete');
         });
-
-        // Tutorial List
-        Route::prefix('/tutorial')->group(function () {
-            Route::get('/', function () {
-                return redirect()->route('tutorial.show.index');
-            });
-            Route::get('/json', 'Admin\TutorialController@json')->name('tutorial.json');
-            Route::get('/{id}/delete', 'Admin\TutorialController@delete')->name('tutorial.delete');
-            Route::resource('/show', 'Admin\TutorialController', ['as' => 'tutorial'])->except(['destroy']);
-        });
+        Route::resource('anggota', 'Admin\AnggotaController', ['as' => 'admin'])->except(['destroy']);
     });
 });
