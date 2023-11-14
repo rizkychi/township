@@ -1,3 +1,10 @@
 .bg-gradient-primary {
     background: none !important;
 }
+.ck-editor__editable_inline:not(.ck-comment__input *) {
+    min-height: 200px;
+    overflow-y: auto;
+}
+.sidenav .navbar-brand, .sidenav .navbar-heading {
+    padding: 1.4rem;
+}

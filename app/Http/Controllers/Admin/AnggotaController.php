@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
 use App\Models\Anggota;
 
@@ -159,7 +159,7 @@ class AnggotaController extends Controller
         if ($anggota->delete()) {
             return back()->with('success', 'Dihapus');
         } else {
-            return back()->with('errors', 'Something went wrong!');
+            return back()->with('errors', 'Terjadi kesalahan!');
         }
     }
 }

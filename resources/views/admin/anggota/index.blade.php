@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="table-responsive py-4">
-        <table class="table table-flush dtx">
+        <table class="table table-flush w-100 dtx">
           <thead class="thead-light">
             <tr>
               <th>No</th>

@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Jogmatis">
   <meta name="author" content="Jogmatis">
-  <title>@yield('page_title') | Jogmatis</title>
+  <title>@yield('page_title') | TKSCI Jogmatis</title>
   <!-- Favicon -->
   <!-- <link rel="icon" href="../../assets/img/brand/favicon.png" type="image/png"> -->
   <!-- Fonts -->
@@ -28,6 +28,7 @@
   <!-- <link rel="stylesheet" href="{{ asset('/src/fonts/nucleo/css/nucleo.css') }}" type="text/css"> -->
   <link rel="stylesheet" href="{{ asset('/src/fonts/fontawesome/all.min.css') }}" type="text/css">
   <!-- Page plugins -->
+  <link rel="stylesheet" href="{{ asset('/src/vendor/select2/dist/css/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
@@ -55,7 +56,7 @@
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="{{ route('admin.home') }}">
           <!-- <img src="{{ asset('/src/img/header_jogmatis.png') }}" class="navbar-brand-img" alt="Jogmatis Anggota"> -->
-          Jogmatis
+          TKSCI Jogmatis
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
@@ -73,11 +74,13 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           @php
-            $home = $anggota = '';
-            if (Route::is('admin.*'))
-              $home = 'active';
-            else if (Route::is('admin.anggota.*'))
+            $home = $anggota = $content = '';
+            if (Route::is('admin.anggota.*'))
               $anggota = 'active';
+            else if (Route::is('admin.content.*'))
+              $content = 'active';
+            else
+              $home = 'active';
           @endphp
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -92,6 +95,12 @@
                 <span class="nav-link-text">Anggota</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {{ $content }}" href="{{ route('admin.content.index') }}">
+                <i class="fas fa-copy text-warning"></i>
+                <span class="nav-link-text">Konten</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -100,7 +109,7 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark border-bottom" style="background-color: gold;">
+    <nav class="navbar navbar-top navbar-expand navbar-light" style="background-color: none;">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Title -->
@@ -121,7 +130,7 @@
             <li class="nav-item">
               <!-- Sidenav toggler -->
               <!-- <h6 class="h2 m-0 text-white">@yield('title')</h6> -->
-              <img src="{{ asset('/src/img/header_jogmatis.png') }}" class="navbar-brand-img" alt="Jogmatis">
+              <img src="{{ asset('/src/img/header_jogmatis.png') }}" class="navbar-brand-img" alt="TKSCI Jogmatis">
             </li>
           </ul>
           <ul class="navbar-nav align-items-center ml-auto">
@@ -132,7 +141,7 @@
                     <img alt="Image placeholder" src="{{ asset('/src/img/team-1.jpg') }}">
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">{{ strtoupper(Auth::getUser()->username) }}</span>
+                    <span class="mb-0 text-sm font-weight-bold lead">{{ strtoupper(Auth::getUser()->username) }}</span>
                   </div>
                 </div>
               </a>
@@ -140,7 +149,7 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="#!" class="dropdown-item">
+                <a href="{{ route('admin.password.index') }}" class="dropdown-item">
                   <i class="fas fa-key"></i>
                   <span>Change Password</span>
                 </a>
@@ -156,7 +165,7 @@
     </nav>
     <!-- Header -->
     <!-- Header -->
-    <div class="header pb-6" style="background-color: gold;">
+    <div class="header pb-6" style="background-color: none;">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-2">
@@ -177,7 +186,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-lg-6">
             <div class="copyright text-center text-muted">
-              &copy; 2023 <a href="{{ route('home') }}" class="font-weight-bold ml-1" target="_blank">Jogmatis</a>
+              &copy; 2023 <a href="{{ route('home') }}" class="font-weight-bold ml-1" target="_blank">TKSCI Jogmatis</a>
             </div>
           </div>
         </div>
@@ -197,6 +206,7 @@
   <script src="{{ asset('/src/js/chart.js/dist/Chart.extension.js') }}"></script>
 
   <!-- Optional JS -->
+  <script src="{{ asset('/src/vendor/select2/dist/js/select2.min.js') }}"></script>
   <script src="{{ asset('/src/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('/src/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('/src/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
@@ -209,6 +219,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
   <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/datatables.min.js"></script>
 
+  <!-- CKEditor -->
+  <script src="{{ asset('/src/js/ckeditor.js') }}"></script>
 
   <!-- Argon JS -->
   <script src="{{ asset('/src/js/argon.min.js') }}"></script>
@@ -220,52 +232,11 @@
   @stack('scripts')
 
   <!-- Custom JS -->
+  <script src="{{ asset('/src/js/custom.js') }}"></script>
   <script>
     $('.dtx').on( 'init.dt', function () {
 			$('div.dataTables_length select').removeClass('custom-select custom-select-sm');
     });
-
-    function newexportaction(e, dt, button, config) {
-         var self = this;
-         var oldStart = dt.settings()[0]._iDisplayStart;
-         dt.one('preXhr', function (e, s, data) {
-             // Just this once, load all data from the server...
-             data.start = 0;
-             data.length = 2147483647;
-             dt.one('preDraw', function (e, settings) {
-                 // Call the original action function
-                 if (button[0].className.indexOf('buttons-copy') >= 0) {
-                     $.fn.dataTable.ext.buttons.copyHtml5.action.call(self, e, dt, button, config);
-                 } else if (button[0].className.indexOf('buttons-excel') >= 0) {
-                     $.fn.dataTable.ext.buttons.excelHtml5.available(dt, config) ?
-                         $.fn.dataTable.ext.buttons.excelHtml5.action.call(self, e, dt, button, config) :
-                         $.fn.dataTable.ext.buttons.excelFlash.action.call(self, e, dt, button, config);
-                 } else if (button[0].className.indexOf('buttons-csv') >= 0) {
-                     $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
-                         $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
-                         $.fn.dataTable.ext.buttons.csvFlash.action.call(self, e, dt, button, config);
-                 } else if (button[0].className.indexOf('buttons-pdf') >= 0) {
-                     $.fn.dataTable.ext.buttons.pdfHtml5.available(dt, config) ?
-                         $.fn.dataTable.ext.buttons.pdfHtml5.action.call(self, e, dt, button, config) :
-                         $.fn.dataTable.ext.buttons.pdfFlash.action.call(self, e, dt, button, config);
-                 } else if (button[0].className.indexOf('buttons-print') >= 0) {
-                     $.fn.dataTable.ext.buttons.print.action(e, dt, button, config);
-                 }
-                 dt.one('preXhr', function (e, s, data) {
-                     // DataTables thinks the first item displayed is index 0, but we're not drawing that.
-                     // Set the property to what it was before exporting.
-                     settings._iDisplayStart = oldStart;
-                     data.start = oldStart;
-                 });
-                 // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
-                 setTimeout(dt.ajax.reload, 0);
-                 // Prevent rendering of the full data to the DOM
-                 return false;
-             });
-         });
-         // Requery the server with the new one-time export settings
-         dt.ajax.reload();
-     }
   </script>
 </body>
 
