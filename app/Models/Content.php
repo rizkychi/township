@@ -14,4 +14,12 @@ class Content extends Model
     protected $casts = [
         'published' => 'boolean',
     ];
+
+    public function getNext() {
+        return $this->where('id', '>', $this->id)->orderBy('id','asc')->first();
+    }
+
+    public function getPrev() {
+        return $this->where('id', '<', $this->id)->orderBy('id','desc')->first();
+    }
 }

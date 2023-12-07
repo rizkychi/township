@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anggota;
+use App\Models\Content;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +16,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $views = Content::all()->sum('views');
+        $content = Content::all()->count();
+        $member = Anggota::all()->count();
+        $cars = Anggota::whereNotNull('kendaraan_jenis')->count();
+        return view('admin.home')
+        ->with('views', $views)
+        ->with('content', $content)
+        ->with('member', $member)
+        ->with('cars', $cars);
     }
 
     /**

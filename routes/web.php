@@ -19,6 +19,9 @@ Route::middleware('web')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/login', 'Auth\AuthController@form')->name('login');
     Route::post('/login', 'Auth\AuthController@login')->name('doLogin');
+    Route::get('/topic/{topic}', 'HomeController@topic')->name('topic');
+    Route::get('/post/{id}', 'HomeController@post')->name('post');
+    Route::get('/search', 'HomeController@search')->name('search');
 
     // Admin Route
     Route::prefix('admin')->middleware('auth')->group(function () {
