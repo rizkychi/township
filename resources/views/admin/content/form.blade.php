@@ -43,7 +43,7 @@ $rute = isset($data) ? route('admin.content.update', ['content' => $data->id]) :
                 <label class="form-control-label" for="topic">Topik</label>
                 <select class="form-control" id="topic" name="topic" data-toggle="select">
                   @foreach ($topics as $topic)
-                    <option>{{ $topic }}</option>
+                    <option value="{{ $topic }}" {{ old('topic', @$data->topic) == $topic ? 'selected' : '' }}>{{ $topic }}</option>
                   @endforeach
                 </select>
               </div>

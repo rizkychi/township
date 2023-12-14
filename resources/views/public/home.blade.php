@@ -60,7 +60,7 @@
 
 
     <!-- post wraper start-->
-    <section class="block-wrapper mt-3">
+    <section class="block-wrapper mt-3 mb-3">
         <div class="container">
 
             <div class="row">
@@ -136,7 +136,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    @include('_template.master-sidebar');
+                    @include('_template.master-sidebar')
                 </div>
             </div>
             <!-- row end-->

@@ -55,6 +55,22 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
                 <input type="date" name="tgl_reg_tksci" class="form-control" id="tgl_reg_tksci" placeholder="Tanggal" value="{{ old('tgl_reg_tksci', @$data->tgl_reg_tksci) }}">
               </div>
             </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="status">Status</label>
+                <select class="form-control" id="status" name="status" data-toggle="select">
+                  @foreach ($statuses as $key => $val)
+                    <option value="{{ $key }}" {{ old('status', @$data->status) == $key ? 'selected':''}}>{{ $val }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="form-group">
+                <label class="form-control-label" for="keterangan">Keterangan</label>
+                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="" value="{{ old('keterangan', @$data->keterangan) }}">
+              </div>
+            </div>
           </div>
 
           <hr class="mt-2 mb-4">

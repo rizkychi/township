@@ -52,3 +52,10 @@ img.sidebar-img {
 .header-middle.v2 {
     background-color: transparent;
 }
+.single-post ol, .single-post ul {
+    margin-top: -1rem;
+}
+.single-post li {
+    color: #232323;
+    font-size: 16px;
+}

@@ -80,6 +80,17 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Status
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Status newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Status newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Status query()
+ */
+	class Status extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Topic
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Topic newModelQuery()

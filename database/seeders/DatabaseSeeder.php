@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
                 'kendaraan_nopol' => 'AB 1234 CD',
                 'kendaraan_tahun' => '2017',
                 'tgl_reg_tksci' => '2022-02-02',
+                'status' => 'aktif'
             ]
         ]);
     }

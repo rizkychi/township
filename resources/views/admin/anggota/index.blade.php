@@ -42,6 +42,8 @@
               <th>Warna Kendaraan</th>
               <th>Tahun Kendaraan</th>
               <th>Nopol Kendaraan</th>
+              <th>Status</th>
+              <th>Keterangan</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -136,6 +138,16 @@
         {
           data: 'kendaraan_nopol',
           name: 'kendaraan_nopol',
+          visible: false
+        },
+        {
+          data: 'status_label',
+          name: 'status_label',
+          visible: false
+        },
+        {
+          data: 'keterangan',
+          name: 'keterangan',
           visible: false
         },
         {

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 use App\Models\Anggota;
+use App\Models\Status;
 
 class AnggotaController extends Controller
 {
@@ -30,7 +31,9 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('admin.anggota.form');
+        $statuses = new Status();
+        return view('admin.anggota.form')
+            ->with('statuses', $statuses->getList());
     }
 
     /**
@@ -55,6 +58,8 @@ class AnggotaController extends Controller
         $mem->kendaraan_warna = $request->kendaraan_warna;
         $mem->kendaraan_nopol = $request->kendaraan_nopol;
         $mem->kendaraan_tahun = $request->kendaraan_tahun;
+        $mem->status = $request->status;
+        $mem->keterangan = $request->keterangan;
 
         // Store into database
         if ($mem->save()) {
@@ -84,8 +89,10 @@ class AnggotaController extends Controller
     public function edit($id)
     {
         $mem = Anggota::findOrFail($id);
+        $statuses = new Status();
         return view('admin.anggota.form')
-            ->with('data', $mem);
+            ->with('data', $mem)
+            ->with('statuses', $statuses->getList());
     }
 
     /**
@@ -114,6 +121,8 @@ class AnggotaController extends Controller
         $mem->kendaraan_warna = $request->kendaraan_warna;
         $mem->kendaraan_nopol = $request->kendaraan_nopol;
         $mem->kendaraan_tahun = $request->kendaraan_tahun;
+        $mem->status = $request->status;
+        $mem->keterangan = $request->keterangan;
 
         if ($mem->update()) {
             return redirect()->route('admin.anggota.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
@@ -147,6 +156,9 @@ class AnggotaController extends Controller
                     $cols .= '</div>';
                     return $cols;
                 })
+                ->addColumn('status_label', function ($row) {
+                    return $this->getStatusLabel($row->status);
+                })
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -161,5 +173,11 @@ class AnggotaController extends Controller
         } else {
             return back()->with('errors', 'Terjadi kesalahan!');
         }
+    }
+
+    function getStatusLabel($key) {
+        $statuses = new Status();
+        $statuses = $statuses->getList();
+        return $statuses[$key] ?? '';
     }
 }
