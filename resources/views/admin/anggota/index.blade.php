@@ -32,7 +32,7 @@
               <th>No</th>
               <th>ID Lokal</th>
               <th>ID NAS KODE REG</th>
-              <th>Nama</th>
+              <th style="min-width: 180px">Nama</th>
               <th>No. HP</th>
               <th>Tempat Lahir</th>
               <th>Tanggal Lahir</th>
@@ -61,15 +61,15 @@
     var table = $('.dtx').DataTable({
       dom: 'Bfrtip',
       buttons: [
-          {
-              extend: 'excel',
-              text: '<span class="text-success"><i class="fa fa-file-excel"></i>  Excel</span>',
-              titleAttr: 'Excel',
-              action: newexportaction,
-              exportOptions: {
-                  columns: ':not(:last-child)',
-              }
+        {
+          extend: 'excel',
+          text: '<span class="text-success"><i class="fa fa-file-excel"></i>  Excel</span>',
+          titleAttr: 'Excel',
+          action: newexportaction,
+          exportOptions: {
+              columns: ':not(:last-child)',
           }
+        }
       ],
       processing: true,
       serverSide: true,
@@ -141,9 +141,9 @@
           visible: false
         },
         {
-          data: 'status_label',
-          name: 'status_label',
-          visible: false
+          data: 'status_label_html',
+          name: 'status_label_html',
+          visible: true
         },
         {
           data: 'keterangan',
@@ -169,10 +169,9 @@
       
       $.post('{{ route("admin.anggota.detail") }}', { id: _id, _token: "{{ csrf_token() }}"}, function(result){
         rs = JSON.parse(result);
-        console.log(rs)
         Swal.fire({
           title: 'Detail anggota',
-          width: '800px',
+          width: '820px',
           html: `
             <table class="table table-sm table-custom">
               <tr>
@@ -189,7 +188,7 @@
                 <td>${rs.kode_reg ?? '-'}</td>
                 <th class="col-md-2">Status</th>
                 <td class="col-auto">:</td>
-                <td class="col-auto"><span class="badge badge-${rs.status_label_color}" title="${rs.keterangan}">${rs.status_label}</span></td>
+                <td class="col-auto"><span class="badge badge-${rs.status_label_color}" title="${rs.keterangan ?? rs.status_label}">${rs.status_label}</span></td>
               </tr>
               <tr>
                 <th>Nama</th>

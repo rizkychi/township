@@ -157,7 +157,7 @@ class AnggotaController extends Controller
                     $cols .= '</div>';
                     return $cols;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'status_label_html'])
                 ->make(true);
         }
     }
