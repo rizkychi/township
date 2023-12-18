@@ -158,6 +158,82 @@
         },
       ],
     });
+    
+    $('[data-toggle="tooltip"]').tooltip()
+
+    $('.dtx').on('click', 'a.btn-lihat', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      _id = $(this).data('id');
+      
+      $.post('{{ route("admin.anggota.detail") }}', { id: _id, _token: "{{ csrf_token() }}"}, function(result){
+        rs = JSON.parse(result);
+        console.log(rs)
+        Swal.fire({
+          title: 'Detail anggota',
+          width: '800px',
+          html: `
+            <table class="table table-sm table-custom">
+              <tr>
+                <th class="col-md-2">ID Lokal</th>
+                <td class="col-auto">:</td>
+                <td class="col-md-4">${rs.id_lokal ?? '-'}</td>
+                <th class="col-md-2">Tanggal Reg TKSCI</th>
+                <td class="col-auto">:</td>
+                <td class="col-auto">${rs.tgl_reg_tksci ?? '-'}</td>
+              </tr> 
+              <tr>
+                <th>ID_NAS KODE_REG</th>
+                <td>:</td>
+                <td>${rs.kode_reg ?? '-'}</td>
+                <th class="col-md-2">Status</th>
+                <td class="col-auto">:</td>
+                <td class="col-auto"><span class="badge badge-${rs.status_label_color}" title="${rs.keterangan}">${rs.status_label}</span></td>
+              </tr>
+              <tr>
+                <th>Nama</th>
+                <td>:</td>
+                <td colspan="4">${rs.nama ?? '-'}</td>
+              </tr>
+              <tr>
+                <th>Tempat/Tanggal Lahir</th>
+                <td>:</td>
+                <td colspan="4">${rs.tempat_lahir ?? '-'}, ${rs.tgl_lahir ?? '-'}</td>
+              </tr>
+              <tr>
+                <th>No. HP (Whatsapp)</th>
+                <td>:</td>
+                <td colspan="4">${rs.no_hp ?? '-'}</td>
+              </tr>
+              <tr>
+                <th>Alamat</th>
+                <td>:</td>
+                <td colspan="4">${rs.alamat ?? '-'}</td>
+              </tr>
+            </table>
+            <table class="table table-sm">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">Jenis Kijang</th>
+                  <th scope="col">Warna</th>
+                  <th scope="col">Nomor Polisi</th>
+                  <th scope="col">Tahun</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-light">
+                  <td>${rs.kendaraan_jenis ?? '-'}</td>
+                  <td>${rs.kendaraan_warna ?? '-'}</td>
+                  <td>${rs.kendaraan_nopol ?? '-'}</td>
+                  <td>${rs.kendaraan_tahun ?? '-'}</td>
+                </tr>
+              </tbody>
+            </table>
+          `,
+        });
+      });
+    });
   });
 </script>
 @endpush

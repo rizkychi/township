@@ -24,7 +24,7 @@ Route::middleware('web')->group(function () {
     Route::get('/search', 'HomeController@search')->name('search');
 
     // Admin Route
-    Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::prefix('dash')->middleware('auth')->group(function () {
         Route::get('/', 'Admin\HomeController@index')->name('admin.home');
         Route::get('/logout', 'Auth\AuthController@logout')->name('admin.logout');
         Route::get('/password', 'Admin\PasswordController@index')->name('admin.password.index');
@@ -33,6 +33,7 @@ Route::middleware('web')->group(function () {
         // Anggota
         Route::prefix('anggota')->group(function () {
             Route::get('json', 'Admin\AnggotaController@json')->name('admin.anggota.json');
+            Route::post('get_detail', 'Admin\AnggotaController@getDetail')->name('admin.anggota.detail');
             Route::get('{anggota}/delete', 'Admin\AnggotaController@delete')->name('admin.anggota.delete');
         });
         Route::resource('anggota', 'Admin\AnggotaController', ['as' => 'admin'])->except(['destroy']);

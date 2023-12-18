@@ -151,13 +151,11 @@ class AnggotaController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $cols = '<div class="d-flex">';
+                    $cols .= '<a href="#" data-id="' . $row->id . '" class="btn-sm btn-info mx-1 btn-lihat" title="Lihat"><i class="fas fa-eye"></i></a>';
                     $cols .= '<a href="' . route('admin.anggota.edit', ['anggotum' => $row->id]) . '" class="btn-sm btn-primary mx-1" title="Edit"><i class="fas fa-pen"></i></a>';
                     $cols .= '<a href="" data-url="' . route('admin.anggota.delete', ['anggota' => $row->id]) . '" data-text="' . $this->title . '" class="btn-sm btn-danger mx-1" onclick="deleteConfirm(event, this)" title="Hapus"><i class="fas fa-trash"></i></a>';
                     $cols .= '</div>';
                     return $cols;
-                })
-                ->addColumn('status_label', function ($row) {
-                    return $this->getStatusLabel($row->status);
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -175,9 +173,10 @@ class AnggotaController extends Controller
         }
     }
 
-    function getStatusLabel($key) {
-        $statuses = new Status();
-        $statuses = $statuses->getList();
-        return $statuses[$key] ?? '';
+    // Get detail
+    public function getDetail(Request $request) {
+        $anggota = Anggota::findOrFail($request->id);
+        echo json_encode($anggota);
+        exit;
     }
 }

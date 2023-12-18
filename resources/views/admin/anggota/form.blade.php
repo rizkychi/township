@@ -40,7 +40,7 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
             <div class="col-md-3">
               <div class="form-group">
                 <label class="form-control-label" for="kode_reg">ID_NAS KODE_REG</label>
-                <input type="text" name="kode_reg" class="form-control" id="kode_reg" placeholder="" value="{{ old('kode_reg', @$data->kode_reg) }}">
+                <input type="text" name="kode_reg" class="form-control" id="kode_reg" placeholder="ID_NAS KODE_REG" value="{{ old('kode_reg', @$data->kode_reg) }}">
               </div>
             </div>
             <div class="col-md-3">
@@ -68,7 +68,7 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
             <div class="col-md-9">
               <div class="form-group">
                 <label class="form-control-label" for="keterangan">Keterangan</label>
-                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="" value="{{ old('keterangan', @$data->keterangan) }}">
+                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Keterangan" value="{{ old('keterangan', @$data->keterangan) }}">
               </div>
             </div>
           </div>

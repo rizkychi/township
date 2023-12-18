@@ -20,15 +20,20 @@ namespace App\Models{
  * @property string|null $kode_reg
  * @property string|null $tempat_lahir
  * @property string|null $tgl_lahir
- * @property string $no_hp
+ * @property string|null $no_hp
  * @property string|null $alamat
  * @property string|null $kendaraan_jenis
  * @property string|null $kendaraan_warna
  * @property string|null $kendaraan_nopol
  * @property string|null $kendaraan_tahun
  * @property string|null $tgl_reg_tksci
+ * @property string|null $status
+ * @property string|null $keterangan
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $status_label
+ * @property-read mixed $status_label_color
+ * @property-read mixed $status_label_html
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota query()
@@ -40,9 +45,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereKendaraanNopol($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereKendaraanTahun($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereKendaraanWarna($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereKeterangan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereKodeReg($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereNama($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereNoHp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereTempatLahir($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereTglLahir($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereTglRegTksci($value)
