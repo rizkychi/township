@@ -125,7 +125,7 @@
       <div class="row align-items-center justify-content-center">
         <div class="col-xl-6">
           <div class="copyright text-center text-muted">
-            &copy; 2023 <a href="https://jogmatis.masrizky.com" class="font-weight-bold ml-1" target="_blank">Jogmatis</a>
+            &copy; 2023 <a href="{{ route('home') }}" class="font-weight-bold ml-1" target="_blank">Jogmatis</a>
           </div>
         </div>
       </div>
