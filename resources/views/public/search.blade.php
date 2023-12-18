@@ -22,7 +22,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('search') }}">{{ $query }}</a>
+                                        <a href="{{ route('search') }}">Pencarian</a>
                                     </li>
                                 </ol>
                                 <div class="clearfix entry-cat-header text-center">
