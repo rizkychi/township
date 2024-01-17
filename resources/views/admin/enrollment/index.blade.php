@@ -1,8 +1,8 @@
 @extends('_template.master-admin')
 
-@section('page_title', 'Anggota')
+@section('page_title', 'Pendaftaran Anggota')
 
-@section('title', 'Anggota')
+@section('title', 'Pendaftaran Anggota')
 
 @section('content')
 <!-- Table -->
@@ -13,15 +13,10 @@
       <div class="card-header">
         <div class="row">
           <div class="col-8">
-            <h3 class="mb-0">Anggota</h3>
+            <h3 class="mb-0">Pendaftaran Anggota</h3>
             <p class="text-sm mb-0">
               List yang menjadi anggota Jogmatis.
             </p>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            <a href="{{ route('admin.anggota.create') }}" class="btn btn-sm btn-primary">
-              <span class="btn-inner--icon"><i class="fas fa-plus"></i> Tambah Anggota</span>
-            </a>
           </div>
         </div>
       </div>
@@ -30,20 +25,16 @@
           <thead class="thead-light">
             <tr>
               <th>No</th>
-              <th>ID Lokal</th>
-              <th>ID NAS KODE REG</th>
               <th style="min-width: 180px">Nama</th>
               <th>No. HP</th>
               <th>Tempat Lahir</th>
               <th>Tanggal Lahir</th>
               <th>Alamat</th>
-              <th>Tanggal Register TKSCI</th>
               <th>Jenis Kendaraan</th>
               <th>Warna Kendaraan</th>
               <th>Tahun Kendaraan</th>
               <th>Nopol Kendaraan</th>
               <th>Status</th>
-              <th>Keterangan</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -73,7 +64,7 @@
       ],
       processing: true,
       serverSide: true,
-      ajax: "{{ route('admin.anggota.json') }}",
+      ajax: "{{ route('admin.enrollment.json') }}",
       language: {
         paginate: {
           previous: "<i class='fas fa-angle-left'>",
@@ -83,14 +74,6 @@
       columns: [{
           data: 'DT_RowIndex',
           name: 'DT_RowIndex'
-        },
-        {
-          data: 'id_lokal',
-          name: 'id_lokal'
-        },
-        {
-          data: 'kode_reg',
-          name: 'kode_reg'
         },
         {
           data: 'nama',
@@ -113,12 +96,6 @@
         {
           data: 'alamat',
           name: 'alamat',
-          visible: false
-        },
-        {
-          data: 'tgl_reg_tksci',
-          name: 'tgl_reg_tksci',
-          visible: false
         },
         {
           data: 'kendaraan_jenis',
@@ -146,11 +123,6 @@
           visible: true
         },
         {
-          data: 'keterangan',
-          name: 'keterangan',
-          visible: false
-        },
-        {
           data: 'action',
           name: 'action',
           orderable: false,
@@ -167,48 +139,37 @@
 
       _id = $(this).data('id');
       
-      $.post('{{ route("admin.anggota.detail") }}', { id: _id, _token: "{{ csrf_token() }}"}, function(result){
+      $.post('{{ route("admin.enrollment.detail") }}', { id: _id, _token: "{{ csrf_token() }}"}, function(result){
         rs = JSON.parse(result);
         Swal.fire({
-          title: 'Detail Anggota',
+          title: 'Detail Pendaftar',
           width: '820px',
           html: `
             <table class="table table-sm table-custom">
               <tr>
-                <th class="col-md-2">ID Lokal</th>
-                <td class="col-auto">:</td>
-                <td class="col-md-4">${rs.id_lokal ?? '-'}</td>
-                <th class="col-md-2">Tanggal Reg TKSCI</th>
-                <td class="col-auto">:</td>
-                <td class="col-auto">${rs.tgl_reg_tksci ?? '-'}</td>
-              </tr> 
-              <tr>
-                <th>ID_NAS KODE_REG</th>
-                <td>:</td>
-                <td>${rs.kode_reg ?? '-'}</td>
                 <th class="col-md-2">Status</th>
                 <td class="col-auto">:</td>
-                <td class="col-auto"><span class="badge badge-${rs.status_label_color}" title="${rs.keterangan ?? rs.status_label}">${rs.status_label}</span></td>
+                <td class="col-md-9"><span class="badge badge-${rs.status_label_color}" title="${rs.keterangan ?? rs.status_label}">${rs.status_label}</span></td>
               </tr>
               <tr>
                 <th>Nama</th>
                 <td>:</td>
-                <td colspan="4">${rs.nama ?? '-'}</td>
+                <td>${rs.nama ?? '-'}</td>
               </tr>
               <tr>
                 <th>Tempat/Tanggal Lahir</th>
                 <td>:</td>
-                <td colspan="4">${rs.tempat_lahir ?? '-'}, ${rs.tgl_lahir ?? '-'}</td>
+                <td>${rs.tempat_lahir ?? '-'}, ${rs.tgl_lahir ?? '-'}</td>
               </tr>
               <tr>
                 <th>No. HP (Whatsapp)</th>
                 <td>:</td>
-                <td colspan="4">${rs.no_hp ?? '-'}</td>
+                <td>${rs.no_hp ?? '-'}</td>
               </tr>
               <tr>
                 <th>Alamat</th>
                 <td>:</td>
-                <td colspan="4">${rs.alamat ?? '-'}</td>
+                <td>${rs.alamat ?? '-'}</td>
               </tr>
             </table>
             <table class="table table-sm">

@@ -22,6 +22,8 @@ Route::middleware('web')->group(function () {
     Route::get('/topic/{topic}', 'HomeController@topic')->name('topic');
     Route::get('/post/{id}', 'HomeController@post')->name('post');
     Route::get('/search', 'HomeController@search')->name('search');
+    Route::get('/register', 'HomeController@registerForm')->name('register');
+    Route::post('/register', 'HomeController@register');
 
     // Admin Route
     Route::prefix('dash')->middleware('auth')->group(function () {
@@ -37,6 +39,14 @@ Route::middleware('web')->group(function () {
             Route::get('{anggota}/delete', 'Admin\AnggotaController@delete')->name('admin.anggota.delete');
         });
         Route::resource('anggota', 'Admin\AnggotaController', ['as' => 'admin'])->except(['destroy']);
+
+        // Enroll
+        Route::prefix('enrollment')->group(function () {
+            Route::get('json', 'Admin\EnrollmentController@json')->name('admin.enrollment.json');
+            Route::post('get_detail', 'Admin\EnrollmentController@getDetail')->name('admin.enrollment.detail');
+            Route::get('{enrollment}/delete', 'Admin\EnrollmentController@delete')->name('admin.enrollment.delete');
+        });
+        Route::resource('enrollment', 'Admin\EnrollmentController', ['as' => 'admin'])->except(['destroy']);
 
         // Content
         Route::prefix('content')->group(function () {

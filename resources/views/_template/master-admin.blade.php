@@ -74,11 +74,13 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           @php
-            $home = $anggota = $content = '';
+            $home = $anggota = $content = $enrollment = '';
             if (Route::is('admin.anggota.*'))
               $anggota = 'active';
             else if (Route::is('admin.content.*'))
               $content = 'active';
+            else if (Route::is('admin.enrollment.*'))
+              $enrollment = 'active';
             else
               $home = 'active';
           @endphp
@@ -93,6 +95,12 @@
               <a class="nav-link {{ $anggota }}" href="{{ route('admin.anggota.index') }}">
                 <i class="fas fa-users text-info"></i>
                 <span class="nav-link-text">Anggota</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ $enrollment }}" href="{{ route('admin.enrollment.index') }}">
+                <i class="fas fa-user-plus text-success"></i>
+                <span class="nav-link-text">Pendaftaran</span>
               </a>
             </li>
             <li class="nav-item">

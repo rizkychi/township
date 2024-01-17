@@ -65,3 +65,10 @@ img.sidebar-img {
 .tooltip {
     z-index: 100000000; 
 }
+.ts-footer {
+    background: #2c2c2c;
+    padding: 8px 0px;
+}
+.copyright-text p {
+    color: #aaa;
+}

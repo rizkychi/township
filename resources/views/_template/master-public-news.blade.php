@@ -32,6 +32,8 @@
     <!-- slick -->
     <link rel="stylesheet" href="{{ asset('/src/css/news/slick.css') }}">
 
+    <!-- Cropper -->
+    <link rel="stylesheet" href="{{ asset('/src/css/cropper.min.css') }}">
 
 
     <!-- navigation -->
@@ -180,6 +182,9 @@
                                         <a href="{{ route('topic', ['topic' => $tp]) }}">{{ $tp }}</a>
                                     </li>
                                 @endforeach
+                                <li class="{{ \Route::is('register') ? 'active' : '' }}">
+                                    <a href="{{ route('register') }}">Pendaftaran Anggota</a>
+                                </li>
                             </ul>
                             <!--nav menu end-->
                         </div>
@@ -258,7 +263,8 @@
     <!-- magnific popup JS -->
     <script src="{{ asset('/src/js/news/jquery.magnific-popup.min.js') }}"></script>
 
-
+    <!-- Cropper JS -->
+    <script src="{{ asset('/src/js/cropper.min.js') }}"></script>  
 
     <!-- Bootstrap jQuery -->
     <script src="{{ asset('/src/js/news/bootstrap.min.js') }}"></script>
@@ -271,6 +277,8 @@
     <script src="{{ asset('/src/js/news/smoothscroll.js') }}"></script>
 
     <script src="{{ asset('/src/js/news/main.js') }}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>

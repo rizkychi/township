@@ -87,6 +87,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\EnrollStatus
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EnrollStatus newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EnrollStatus newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EnrollStatus query()
+ */
+	class EnrollStatus extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Enrollment
+ *
+ * @property-read mixed $status_label
+ * @property-read mixed $status_label_color
+ * @property-read mixed $status_label_html
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment query()
+ */
+	class Enrollment extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Status
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Status newModelQuery()
