@@ -1,14 +1,15 @@
+@php
+$rute = isset($data) ? route('admin.enrollment.update', ['enrollment' => $data->id]) : route('admin.enrollment.store');
+$formtype = isset($data) ? 'Edit' : 'Tambah';
+@endphp
+
 @extends('_template.master-admin')
 
-@section('page_title', 'Tambah Anggota')
+@section('page_title', $formtype.' Pendaftar')
 
-@section('title', 'Tambah Anggota')
+@section('title', $formtype.' Pendaftar')
 
 @section('content')
-
-@php
-$rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) : route('admin.anggota.store');
-@endphp
 
 <!-- Table -->
 <div class="row">
@@ -18,7 +19,7 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
       <div class="card-header">
         <div class="row">
           <div class="col-8">
-            <h3 class="mb-0">Tambah Anggota</h3>
+            <h3 class="mb-0">{{ $formtype }} Pendaftar</h3>
           </div>
         </div>
       </div>
@@ -31,7 +32,7 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
           {{ method_field('PUT') }}
           @endif
           <div class="row">
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
               <div class="form-group">
                 <label class="form-control-label" for="id_lokal">ID Lokal</label>
                 <input type="text" name="id_lokal" class="form-control" id="id_lokal" placeholder="" value="{{ old('id_lokal', @$data->id_lokal) ?? '#' }}">
@@ -42,19 +43,19 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
                 <label class="form-control-label" for="kode_reg">ID_NAS KODE_REG</label>
                 <input type="text" name="kode_reg" class="form-control" id="kode_reg" placeholder="ID_NAS KODE_REG" value="{{ old('kode_reg', @$data->kode_reg) }}">
               </div>
-            </div>
+            </div> --}}
             <div class="col-md-3">
               <div class="form-group">
                 <label class="form-control-label" for="no_hp">No. HP (Whatsapp)</label>
                 <input type="text" name="no_hp" class="form-control" id="no_hp" placeholder="No. HP" value="{{ old('no_hp', @$data->no_hp) }}">
               </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
               <div class="form-group">
                 <label class="form-control-label" for="tgl_reg_tksci">Tanggal Registrasi TKSCI</label>
                 <input type="date" name="tgl_reg_tksci" class="form-control" id="tgl_reg_tksci" placeholder="Tanggal" value="{{ old('tgl_reg_tksci', @$data->tgl_reg_tksci) }}">
               </div>
-            </div>
+            </div> --}}
             <div class="col-md-3">
               <div class="form-group">
                 <label class="form-control-label" for="status">Status</label>
@@ -65,15 +66,27 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
                 </select>
               </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label class="form-control-label" for="stnk">STNK</label>
+                <a href="#" class="btn btn-primary form-control show-image" data-type="stnk" data-image="{{ @$data->file_stnk }}">Lihat</a>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <label class="form-control-label" for="sim">SIM</label>
+                <a href="#" class="btn btn-primary form-control show-image" data-type="sim" data-image="{{ @$data->file_sim }}">Lihat</a>
+              </div>
+            </div>
+            {{-- <div class="col-md-9">
               <div class="form-group">
                 <label class="form-control-label" for="keterangan">Keterangan</label>
                 <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Keterangan" value="{{ old('keterangan', @$data->keterangan) }}">
               </div>
-            </div>
+            </div> --}}
           </div>
 
-          <hr class="mt-2 mb-4">
+          {{-- <hr class="mt-2 mb-4"> --}}
 
           <div class="row">
             <div class="col-md-6">
@@ -147,3 +160,28 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
   </div>
 </div>
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+  $(function() {
+    $('.show-image').on('click', function() {
+      var img = $(this).data('image')
+      var types = $(this).data('type')
+      
+      if (types == 'stnk') {
+        img_w = 690
+        img_h = 225
+      } else {
+        img_w = 640
+        img_h = 480
+      }
+
+      var html = `<html><head><title>File</title></head><body style="background: url('`+img+`') no-repeat center center fixed;background-size: 100% 100%;"></body></html>`
+      // var image = '<img src="' + img + '" width="' + img_w + '" height="' + img_h + '" />'
+    
+      var w = window.open('', 'File', 'width=' + (img_w + 15) + ',height=' + (img_h + 15) + ',toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')
+      w.document.write(html)
+    })
+  })
+</script>
+@endpush

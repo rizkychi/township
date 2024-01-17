@@ -46,7 +46,7 @@ Route::middleware('web')->group(function () {
             Route::post('get_detail', 'Admin\EnrollmentController@getDetail')->name('admin.enrollment.detail');
             Route::get('{enrollment}/delete', 'Admin\EnrollmentController@delete')->name('admin.enrollment.delete');
         });
-        Route::resource('enrollment', 'Admin\EnrollmentController', ['as' => 'admin'])->except(['destroy']);
+        Route::resource('enrollment', 'Admin\EnrollmentController', ['as' => 'admin'])->except(['destroy', 'create', 'store']);
 
         // Content
         Route::prefix('content')->group(function () {

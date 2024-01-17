@@ -1,14 +1,15 @@
-@extends('_template.master-admin')
-
-@section('page_title', 'Tambah Anggota')
-
-@section('title', 'Tambah Anggota')
-
-@section('content')
-
 @php
 $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) : route('admin.anggota.store');
+$formtype = isset($data) ? 'Edit' : 'Tambah';
 @endphp
+
+@extends('_template.master-admin')
+
+@section('page_title', $formtype.' Anggota')
+
+@section('title', $formtype.' Anggota')
+
+@section('content')
 
 <!-- Table -->
 <div class="row">
@@ -18,7 +19,7 @@ $rute = isset($data) ? route('admin.anggota.update', ['anggotum' => $data->id]) 
       <div class="card-header">
         <div class="row">
           <div class="col-8">
-            <h3 class="mb-0">Tambah Anggota</h3>
+            <h3 class="mb-0">{{ $formtype }} Anggota</h3>
           </div>
         </div>
       </div>

@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Enrollment;
+use App\Models\EnrollStatus;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class EnrollmentController extends Controller
 {
-    public $title = 'Pendaftaran Anggota';
+    public $title = 'Pendaftar';
 
     /**
      * Display a listing of the resource.
@@ -50,7 +51,7 @@ class EnrollmentController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->route('admin.enrollment.edit', ['enrollment' => $id]);
     }
 
     /**
@@ -61,7 +62,11 @@ class EnrollmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mem = Enrollment::findOrFail($id);
+        $statuses = new EnrollStatus();
+        return view('admin.enrollment.form')
+            ->with('data', $mem)
+            ->with('statuses', $statuses->getList());
     }
 
     /**
@@ -73,7 +78,27 @@ class EnrollmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mem = Enrollment::find($id);
+        if (!$mem) {
+            return back()->with('errors', 'Terjadi kesalahan, '.$this->title.' tidak ditemukan')->withInput();
+        }
+
+        $mem->no_hp = $request->no_hp;
+        $mem->nama = $request->nama;
+        $mem->tempat_lahir = $request->tempat_lahir;
+        $mem->tgl_lahir = $request->tgl_lahir;
+        $mem->alamat = $request->alamat;
+        $mem->kendaraan_jenis = $request->kendaraan_jenis;
+        $mem->kendaraan_warna = $request->kendaraan_warna;
+        $mem->kendaraan_nopol = $request->kendaraan_nopol;
+        $mem->kendaraan_tahun = $request->kendaraan_tahun;
+        $mem->status = $request->status;
+
+        if ($mem->update()) {
+            return redirect()->route('admin.anggota.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
+        } else {
+            return back()->with('errors', 'Terjadi kesalahan, silahkan coba kembali')->withInput();
+        }
     }
 
     /**

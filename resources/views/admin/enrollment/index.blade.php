@@ -15,7 +15,7 @@
           <div class="col-8">
             <h3 class="mb-0">Pendaftaran Anggota</h3>
             <p class="text-sm mb-0">
-              List yang menjadi anggota Jogmatis.
+              List pendaftar anggota Jogmatis.
             </p>
           </div>
         </div>
