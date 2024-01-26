@@ -138,7 +138,7 @@ $formtype = isset($data) ? 'Edit' : 'Tambah';
           <div class="row">
             <div class="col-12 text-right">
               <button type="submit" class="btn btn-primary"> <i class="fas fa-save"></i> Save</button>
-              <a href="{{ route('admin.anggota.index') }}" class="btn btn-danger"> <i class="fas fa-times"></i> Cancel</a>
+              <a href="{{ route('admin.anggota.index') }}" class="btn btn-light"> <i class="fas fa-times"></i> Cancel</a>
             </div>
           </div>
 

@@ -148,9 +148,13 @@ $formtype = isset($data) ? 'Edit' : 'Tambah';
           </div>
 
           <div class="row">
-            <div class="col-12 text-right">
+            <div class="col-6 text-left">
+              <button id="accept" type="button" class="btn btn-success"> <i class="fas fa-user-check"></i> Terima</button>
+              <button id="reject" type="button" class="btn btn-danger"> <i class="fas fa-user-alt-slash"></i> Tolak</button>
+            </div>
+            <div class="col-6 text-right">
               <button type="submit" class="btn btn-primary"> <i class="fas fa-save"></i> Save</button>
-              <a href="{{ route('admin.anggota.index') }}" class="btn btn-danger"> <i class="fas fa-times"></i> Cancel</a>
+              <a href="{{ route('admin.anggota.index') }}" class="btn btn-light"> <i class="fas fa-times"></i> Cancel</a>
             </div>
           </div>
 
@@ -182,6 +186,21 @@ $formtype = isset($data) ? 'Edit' : 'Tambah';
       var w = window.open('', 'File', 'width=' + (img_w + 15) + ',height=' + (img_h + 15) + ',toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes')
       w.document.write(html)
     })
+
+    $('#reject').on('click', function() {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Pendaftaran ditolak. Yakin?',
+        showCancelButton: true,
+        confirmButtonText: 'Tolak',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Ditolak!", "", "success");
+        } 
+      })
+    })
+
+
   })
 </script>
 @endpush

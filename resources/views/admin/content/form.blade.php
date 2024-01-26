@@ -73,7 +73,7 @@ $rute = isset($data) ? route('admin.content.update', ['content' => $data->id]) :
             </div>
             <div class="col-9 text-right pt-3">
               <button type="submit" class="btn btn-primary"> <i class="fas fa-save"></i> Save</button>
-              <a href="{{ route('admin.content.index') }}" class="btn btn-danger"> <i class="fas fa-times"></i> Cancel</a>
+              <a href="{{ route('admin.content.index') }}" class="btn btn-light"> <i class="fas fa-times"></i> Cancel</a>
             </div>
           </div>
 
