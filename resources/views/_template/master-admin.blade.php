@@ -97,7 +97,7 @@
                 <span class="nav-link-text">Anggota</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-none">
               <a class="nav-link {{ $enrollment }}" href="{{ route('admin.enrollment.index') }}">
                 <i class="fas fa-user-plus text-success"></i>
                 <span class="nav-link-text">Pendaftaran</span>

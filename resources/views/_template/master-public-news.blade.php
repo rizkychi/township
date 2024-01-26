@@ -182,7 +182,7 @@
                                         <a href="{{ route('topic', ['topic' => $tp]) }}">{{ $tp }}</a>
                                     </li>
                                 @endforeach
-                                <li class="{{ \Route::is('register') ? 'active' : '' }}">
+                                <li class="{{ \Route::is('register') ? 'active' : '' }} d-none">
                                     <a href="{{ route('register') }}">Pendaftaran Anggota</a>
                                 </li>
                             </ul>
