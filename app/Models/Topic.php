@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
     protected $topic = [
-        'Post',
+        'Berita',
         'Pengumuman',
         'Event',
-        'Berita',
+        'Galeri',
     ];
 
     public function getList() {

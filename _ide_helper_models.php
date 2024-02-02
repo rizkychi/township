@@ -100,12 +100,44 @@ namespace App\Models{
 /**
  * App\Models\Enrollment
  *
+ * @property int $id
+ * @property int|null $anggota_id
+ * @property string $nama
+ * @property string|null $tempat_lahir
+ * @property string|null $tgl_lahir
+ * @property string|null $no_hp
+ * @property string|null $alamat
+ * @property string|null $kendaraan_jenis
+ * @property string|null $kendaraan_warna
+ * @property string|null $kendaraan_nopol
+ * @property string|null $kendaraan_tahun
+ * @property string|null $status
+ * @property string|null $file_stnk
+ * @property string|null $file_sim
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $status_label
  * @property-read mixed $status_label_color
  * @property-read mixed $status_label_html
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereAlamat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereAnggotaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereFileSim($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereFileStnk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereKendaraanJenis($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereKendaraanNopol($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereKendaraanTahun($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereKendaraanWarna($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereNama($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereNoHp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereTempatLahir($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereTglLahir($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereUpdatedAt($value)
  */
 	class Enrollment extends \Eloquent {}
 }

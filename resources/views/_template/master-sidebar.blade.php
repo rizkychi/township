@@ -3,11 +3,6 @@
         <h2 class="widget-title">Kategori</h2>
         <ul class="category-list">
             <li>
-                <a href="{{ route('topic', ['topic' => 'Post']) }}">Post
-                    <span class="ts-{{ $colors['Post'] }}-bg">{{ $count_post }}</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('topic', ['topic' => 'Pengumuman']) }}">Pengumuman
                     <span class="ts-{{ $colors['Pengumuman'] }}-bg">{{ $count_pengumuman }}</span>
                 </a>
@@ -20,6 +15,11 @@
             <li>
                 <a href="{{ route('topic', ['topic' => 'Berita']) }}">Berita
                     <span class="ts-{{ $colors['Berita'] }}-bg">{{ $count_berita }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('topic', ['topic' => 'Galeri']) }}">Galeri
+                    <span class="ts-{{ $colors['Galeri'] }}-bg">{{ $count_post }}</span>
                 </a>
             </li>
 
