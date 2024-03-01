@@ -14,7 +14,7 @@ class SidebarComposer
         $count_pengumuman = Content::where('topic', '=', 'Pengumuman')->where('published', '=', 1)->count();
         $count_berita = Content::where('topic', '=', 'Berita')->where('published', '=', 1)->count();
         $count_event = Content::where('topic', '=', 'Event')->where('published', '=', 1)->count();
-        $count_post = Content::where('topic', '=', 'Galeri')->where('published', '=', 1)->count();
+        $count_post = Content::where('topic', '=', 'Artikel')->where('published', '=', 1)->count();
 
         $view->with('pengumuman', $pengumuman)
                 ->with('berita', $berita)

@@ -178,7 +178,7 @@
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 @php 
-                                    $tpc = ['Pengumuman', 'Event', 'Berita', 'Galeri'];
+                                    $tpc = ['Pengumuman', 'Event', 'Berita', 'Artikel'];
                                 @endphp
                                 @foreach ($tpc as $tp)
                                     @php

@@ -18,8 +18,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('topic', ['topic' => 'Galeri']) }}">Galeri
-                    <span class="ts-{{ $colors['Galeri'] }}-bg">{{ $count_post }}</span>
+                <a href="{{ route('topic', ['topic' => 'Artikel']) }}">Artikel
+                    <span class="ts-{{ $colors['Artikel'] }}-bg">{{ $count_post }}</span>
                 </a>
             </li>
 

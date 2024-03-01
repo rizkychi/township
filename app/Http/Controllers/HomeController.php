@@ -15,7 +15,7 @@ class HomeController extends Controller
         'Pengumuman' => 'yellow',
         'Berita' => 'blue',
         'Event' => 'pink',
-        'Galeri' => 'green',
+        'Artikel' => 'green',
     ];
 
     /**

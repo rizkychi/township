@@ -10,7 +10,7 @@ class Topic extends Model
         'Berita',
         'Pengumuman',
         'Event',
-        'Galeri',
+        'Artikel',
     ];
 
     public function getList() {
