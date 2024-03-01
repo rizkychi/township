@@ -61,6 +61,12 @@
  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
  <![endif]-->
 
+    <style>
+        .header-middle.v2 {
+            background-image: linear-gradient(to right, #46686A 50%, #FDF7DF 50%);
+        }
+    </style>
+
 </head>
 
 <body class="body-color">
@@ -108,13 +114,13 @@
     </section>
     <!-- end top bar-->
 
-    <section class="header-middle v2">
+    <section class="header-middle v2 p-0">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="header-logo">
+                    <div class="header-logo m-0">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('/src/img/header_jogmatis.png') }}" alt="">
+                            <img src="{{ asset('/src/img/header_jogmatis.png') }}" alt="header" class="w-100">
                         </a>
                     </div>
                 </div>
@@ -202,7 +208,7 @@
     <section class="section-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-4 align-self-center">
                     <div class="footer-logo">
                         <a href="#">
                             <img src="{{ asset('/src/img/logo_tksci.png') }}" alt="" width="100">
@@ -212,9 +218,9 @@
                 </div>
                 <!-- col end-->
 
-                <div class="col-lg-8 align-self-center">
+                <div class="col-8 align-self-center">
                     <ul class="footer-social d-flex justify-content-end">
-                        <li class="ts-facebook">
+                        <li class="ts-facebook m-0">
                             <a href="https://www.facebook.com/groups/tksci.jogja">
                                 <i class="fa fa-facebook"></i>
                                 <span>Facebook</span>

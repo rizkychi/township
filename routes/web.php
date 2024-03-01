@@ -24,6 +24,7 @@ Route::middleware('web')->group(function () {
     Route::get('/search', 'HomeController@search')->name('search');
     Route::get('/register', 'HomeController@registerForm')->name('register');
     Route::post('/register', 'HomeController@register');
+    Route::get('/member', 'HomeController@member')->name('member');
 
     // Admin Route
     Route::prefix('dash')->middleware('auth')->group(function () {

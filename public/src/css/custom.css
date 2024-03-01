@@ -49,9 +49,6 @@ img.sidebar-img {
 .post-next img, .post-previous img {
     object-fit: cover;
 }
-.header-middle.v2 {
-    background-color: transparent;
-}
 .single-post ol, .single-post ul {
     margin-top: -1rem;
 }

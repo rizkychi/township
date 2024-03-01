@@ -44,6 +44,12 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    .header-tksci {
+      background-image: url("{{ asset('/src/img/header_jogmatis.png') }}");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      height: 120px;
+    }
   </style>
 </head>
 
@@ -117,7 +123,7 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-light" style="background-color: none;">
+    <nav class="navbar navbar-top navbar-expand navbar-light header-tksci">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Title -->
@@ -134,13 +140,13 @@
               </div>
             </li>
           </ul>
-          <ul class="navbar-nav align-items-center">
+          {{-- <ul class="navbar-nav align-items-center">
             <li class="nav-item">
               <!-- Sidenav toggler -->
               <!-- <h6 class="h2 m-0 text-white">@yield('title')</h6> -->
-              <img src="{{ asset('/src/img/header_jogmatis.png') }}" class="navbar-brand-img" alt="TKSCI Jogmatis">
+              <img src="{{ asset('/src/img/header_jogmatis.png') }}" class="navbar-brand-img w-75" alt="TKSCI Jogmatis">
             </li>
-          </ul>
+          </ul> --}}
           <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown">
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

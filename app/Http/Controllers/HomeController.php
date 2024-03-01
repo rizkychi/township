@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\Content;
 use App\Models\Enrollment;
 use App\Models\Topic;
@@ -132,5 +133,14 @@ class HomeController extends Controller
         } else {
             return back()->with('errors', 'Terjadi kesalahan, silahkan coba kembali')->withInput();
         }
+    }
+
+    public function member()
+    {
+        $list = Anggota::orderBy('created_at', 'DESC')->paginate(10);
+
+        return view('public.member')
+            ->with('list', $list)
+            ->with('colors', $this->colors);
     }
 }
