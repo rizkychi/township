@@ -151,6 +151,8 @@ class ContentController extends Controller
             $url = $url . '-' . $exist->count();
         }
 
+        $cont->url = $url;
+
         if ($cont->update()) {
             return redirect()->route('admin.content.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
         } else {
