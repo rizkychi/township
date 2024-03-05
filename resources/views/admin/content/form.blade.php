@@ -88,7 +88,9 @@ $rute = isset($data) ? route('admin.content.update', ['content' => $data->id]) :
 <script type="text/javascript">
   ClassicEditor
     .create(document.querySelector('#desc'), {
-      // Editor configuration.
+      ckfinder: {
+        uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
+      }
     })
     .then(editor => {
       window.editor = editor;

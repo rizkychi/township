@@ -71,7 +71,7 @@
 							<div class="post-previous float-left">
 								@if ($prev)
                                     <a href="{{ route('post', ['id' => $prev->id]) }}">
-                                        <img src="{{ getImage($prev->desc) }}" alt="">
+                                        <img src="{{ $prev->thumbnail }}" alt="">
                                         <span>Baca Sebelumnya</span>
                                         <p>
                                             {{ $prev->title }}
@@ -82,7 +82,7 @@
 							<div class="post-next float-right">
 								@if ($next)
                                     <a href="{{ route('post', ['id' => $next->id]) }}">
-                                        <img src="{{ getImage($next->desc) }}" alt="">
+                                        <img src="{{ $next->thumbnail }}" alt="">
                                         <span>Baca Selanjutnya</span>
                                         <p>
                                             {{ $next->title }}
@@ -195,7 +195,7 @@
                                         <a class="post-cat ts-{{ $colors[$rel->topic] }}-bg" href="{{ route('topic', ['topic' => $rel->topic]) }}">{{ $rel->topic }}</a>
                                         <div class="ts-post-thumb">
                                             <a href="{{ route('post', ['id' => $rel->id]) }}">
-                                                <img class="img-fluid image-popular" src="{{ getImage($rel->desc) }}" alt="">
+                                                <img class="img-fluid image-popular" src="{{ $rel->thumbnail }}" alt="">
                                             </a>
                                         </div>
                                         <div class="post-content">
@@ -228,16 +228,3 @@
     <!-- post wraper end-->
 
 @endsection
-
-@php
-    function getImage($text) {
-        $regex = '/(data:image\/[^;]+;base64[^"]+)/i';
-        preg_match($regex, $text, $matches_out);
-        
-        if ($matches_out) {
-            return $matches_out[0];
-        } else {
-            return asset('src/img/No-Image-Placeholder.png');
-        }
-    }
-@endphp

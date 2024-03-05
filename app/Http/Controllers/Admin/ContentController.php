@@ -60,6 +60,7 @@ class ContentController extends Controller
         $cont->title = $request->title;
         $cont->desc = $request->desc;
         $cont->topic = $request->topic;
+        $cont->thumbnail = $this->getThumbnail($request->desc);
         $cont->published = $request->published == 'on' ? 1 : 0;
 
         // Store into database
@@ -125,7 +126,8 @@ class ContentController extends Controller
         $cont->title = $request->title;
         $cont->desc = $request->desc;
         $cont->topic = $request->topic;
-        $cont->published = $request->published == 'on' ? 1 : 0;;
+        $cont->thumbnail = $this->getThumbnail($request->desc);
+        $cont->published = $request->published == 'on' ? 1 : 0;
 
         if ($cont->update()) {
             return redirect()->route('admin.content.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
@@ -173,5 +175,16 @@ class ContentController extends Controller
         } else {
             return back()->with('errors', 'Terjadi kesalahan!');
         }
+    }
+
+    function getThumbnail($text) {
+        $matches = [];
+        $src = '/src/img/No-Image-Placeholder.png';
+
+        if(preg_match('/src="(.*?)"/', $text, $matches)) {
+            $src = $matches[1];
+        }
+
+        return $src;
     }
 }

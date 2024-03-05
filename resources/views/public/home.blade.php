@@ -75,7 +75,7 @@
                                         <a class="post-cat ts-{{ $colors[$pop->topic] }}-bg" href="{{ route('topic', ['topic' => $pop->topic]) }}">{{ $pop->topic }}</a>
                                         <div class="ts-post-thumb">
                                             <a href="{{ route('post', ['id' => $pop->id]) }}">
-                                                <img class="img-fluid image-popular" src="{{ getImage($pop->desc) }}"
+                                                <img class="img-fluid image-popular" src="{{ $pop->thumbnail }}"
                                                     alt="">
                                             </a>
                                         </div>
@@ -108,7 +108,7 @@
                                         <a class="post-cat ts-{{ $colors[$late->topic] }}-bg" href="{{ route('topic', ['topic' => $late->topic]) }}">{{ $late->topic }}</a>
                                         <div class="ts-post-thumb">
                                             <a href="{{ route('post', ['id' => $late->id]) }}">
-                                                <img class="img-fluid image-thumb" src="{{ getImage($late->desc) }}" height="200px"
+                                                <img class="img-fluid image-thumb" src="{{ $late->thumbnail }}" height="200px"
                                                     alt="">
                                             </a>
                                         </div>
@@ -146,16 +146,3 @@
     <!-- post wraper end-->
 
 @endsection
-
-@php
-    function getImage($text) {
-        $regex = '/(data:image\/[^;]+;base64[^"]+)/i';
-        preg_match($regex, $text, $matches_out);
-        
-        if ($matches_out) {
-            return $matches_out[0];
-        } else {
-            return asset('src/img/No-Image-Placeholder.png');
-        }
-    }
-@endphp

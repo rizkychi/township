@@ -55,5 +55,8 @@ Route::middleware('web')->group(function () {
             Route::get('{content}/delete', 'Admin\ContentController@delete')->name('admin.content.delete');
         });
         Route::resource('content', 'Admin\ContentController', ['as' => 'admin'])->except(['destroy']);
+
+        // Image Upload
+        Route::post('image_upload', 'Admin\ImageUploadController@storeImage')->name('image.upload');
     });
 });

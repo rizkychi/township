@@ -177,19 +177,6 @@
 
 @endsection
 
-@php
-    function getImage($text) {
-        $regex = '/(data:image\/[^;]+;base64[^"]+)/i';
-        preg_match($regex, $text, $matches_out);
-        
-        if ($matches_out) {
-            return $matches_out[0];
-        } else {
-            return asset('src/img/No-Image-Placeholder.png');
-        }
-    }
-@endphp
-
 @push('scripts')
 <script type="text/javascript">
     $(function() {

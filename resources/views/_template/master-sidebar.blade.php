@@ -69,7 +69,7 @@
                 @if ($pengumuman)
                     @foreach ($pengumuman as $p)
                         <div class="post-content media">
-                            <img class="d-flex sidebar-img" src="{{ getImage($p->desc) }}" alt="">
+                            <img class="d-flex sidebar-img" src="{{ $p->thumbnail }}" alt="">
                             <div class="media-body">
                                 <span class="post-tag">
                                     <a href="{{ route('topic', ['topic' => $p->topic]) }}" class="{{ $colors[$p->topic] }}-color">{{ $p->topic }}</a>
@@ -90,7 +90,7 @@
                 @if ($berita)
                     @foreach ($berita as $b)
                         <div class="post-content media">
-                            <img class="d-flex sidebar-img" src="{{ getImage($b->desc) }}" alt="">
+                            <img class="d-flex sidebar-img" src="{{ $b->thumbnail }}" alt="">
                             <div class="media-body">
                                 <span class="post-tag">
                                     <a href="{{ route('topic', ['topic' => $b->topic]) }}" class="{{ $colors[$b->topic] }}-color"> {{ $b->topic }}</a>
