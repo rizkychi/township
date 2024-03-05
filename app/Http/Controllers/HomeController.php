@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Banner;
 use App\Models\Content;
 use App\Models\Enrollment;
 use App\Models\Topic;
@@ -25,10 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $banner = Banner::all();
         $popular = Content::where('published', '=', 1)->orderBy('views', 'DESC')->skip(0)->take(5)->get();
         $latest = Content::where('published', '=', 1)->orderBy('created_at', 'DESC')->skip(0)->take(6)->get();
 
         return view('public.home')
+            ->with('banner', $banner)
             ->with('popular', $popular)
             ->with('latest', $latest)
             ->with('colors', $this->colors);

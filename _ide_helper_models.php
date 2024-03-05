@@ -60,6 +60,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Banner
+ *
+ * @property int $id
+ * @property string $image
+ * @property int|null $order
+ * @property bool $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Banner whereUpdatedAt($value)
+ */
+	class Banner extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Content
  *
  * @property int $id
@@ -67,6 +90,7 @@ namespace App\Models{
  * @property string $desc
  * @property string $topic
  * @property string|null $thumbnail
+ * @property string $url
  * @property int $views
  * @property bool $published
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -83,6 +107,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereTopic($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereViews($value)
  */
 	class Content extends \Eloquent {}

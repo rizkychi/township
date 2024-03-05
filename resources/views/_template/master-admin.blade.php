@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/src/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+  <!-- Cropper -->
+  <link rel="stylesheet" href="{{ asset('/src/css/cropper.min.css') }}">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('/src/css/argon.min.css') }}" type="text/css">
   <!-- Custom CSS -->
@@ -80,13 +82,15 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           @php
-            $home = $anggota = $content = $enrollment = '';
+            $home = $anggota = $content = $enrollment = $banner = '';
             if (Route::is('admin.anggota.*'))
               $anggota = 'active';
             else if (Route::is('admin.content.*'))
               $content = 'active';
             else if (Route::is('admin.enrollment.*'))
               $enrollment = 'active';
+            else if (Route::is('admin.banner.*'))
+              $banner = 'active';
             else
               $home = 'active';
           @endphp
@@ -113,6 +117,12 @@
               <a class="nav-link {{ $content }}" href="{{ route('admin.content.index') }}">
                 <i class="fas fa-copy text-warning"></i>
                 <span class="nav-link-text">Konten</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ $banner }}" href="{{ route('admin.banner.index') }}">
+                <i class="fas fa-image text-danger"></i>
+                <span class="nav-link-text">Banner</span>
               </a>
             </li>
           </ul>
@@ -242,6 +252,9 @@
   <!-- Sweet Alert -->
   <script src="{{ asset('/vendor/sweetalert/sweetalert.all.js') }}"></script>
   <script src="{{ asset('/src/js/custom-alert.js') }}"></script>
+
+  <!-- Cropper JS -->
+  <script src="{{ asset('/src/js/cropper.min.js') }}"></script>  
 
   @stack('scripts')
 

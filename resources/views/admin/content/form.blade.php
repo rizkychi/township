@@ -1,14 +1,15 @@
-@extends('_template.master-admin')
-
-@section('page_title', 'Tambah Konten')
-
-@section('title', 'Tambah Konten')
-
-@section('content')
-
 @php
 $rute = isset($data) ? route('admin.content.update', ['content' => $data->id]) : route('admin.content.store');
+$formtype = isset($data) ? 'Edit' : 'Tambah';
 @endphp
+
+@extends('_template.master-admin')
+
+@section('page_title', $formtype.' Banner')
+
+@section('title', $formtype.' Banner')
+
+@section('content')
 
 <!-- Table -->
 <div class="row">
@@ -18,7 +19,7 @@ $rute = isset($data) ? route('admin.content.update', ['content' => $data->id]) :
       <div class="card-header">
         <div class="row">
           <div class="col-8">
-            <h3 class="mb-0">Tambah Konten</h3>
+            <h3 class="mb-0">{{ $formtype }} Konten</h3>
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@ $rute = isset($data) ? route('admin.content.update', ['content' => $data->id]) :
                 <label class="form-control-label" for="published">Publish?</label>
                 <div class="form-switch" id="published">
                   <label class="custom-toggle">
-                    <input type="checkbox" name="published" checked>
+                    <input type="checkbox" name="published" {{ old('published', @$data->published) ?? !isset($data) ? 'checked' : '' }}>
                     <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
                   </label>
                 </div>

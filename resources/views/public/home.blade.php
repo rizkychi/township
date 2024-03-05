@@ -11,16 +11,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ts-overlay-style featured-post owl-carousel" id="featured-slider-5">
-                        <div class="item" style="background-image:url({{ asset('/src/img/featured/2.jpg') }})">
+                        @foreach ($banner as $bann)
+                        <div class="item" style="background-image:url({{$bann->image}})">
                         </div>
                         <!-- item end-->
-                        <div class="item" style="background-image:url({{ asset('/src/img/featured/3.jpg') }})">
+                        @endforeach
+                        
+                        {{-- <div class="item" style="background-image:url({{ asset('/src/img/featured/3.jpg') }})">
                         </div>
                         <!-- item end-->
                         <div class="item" style="background-image:url({{ asset('/src/img/featured/4.jpg') }})">
                         </div>
                         <!-- item end-->
-                        <div class="item" style="background-image:url({{ asset('/src/img/featured/6.jpg') }})">
+                        <div class="item" style="background-image:url({{ asset('/src/img/featured/6.jpg') }})"> --}}
                             {{-- 
                             <div class="overlay-post-content">
                             <div class="post-content">
