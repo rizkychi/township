@@ -69,7 +69,7 @@ class ContentController extends Controller
         $url = date('Y-m-') . $title_url;
 
         $exist = Content::where('url', 'LIKE', '%'.$url.'%')->get();
-        if ($exist) {
+        if ($exist->count() > 0) {
             $url = $url . '-' . $exist->count();
         }
 
@@ -147,7 +147,7 @@ class ContentController extends Controller
         $url = date('Y-m-') . $title_url;
 
         $exist = Content::where('url', 'LIKE', '%'.$url.'%')->get();
-        if ($exist) {
+        if ($exist->count() > 0) {
             $url = $url . '-' . $exist->count();
         }
 
