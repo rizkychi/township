@@ -14,6 +14,8 @@ class Content extends Model
     protected $casts = [
         'published' => 'boolean',
     ];
+    
+    protected $appends = ['tanggal'];
 
     public function getNext() {
         return $this->where('id', '>', $this->id)->orderBy('id','asc')->first();
@@ -21,5 +23,10 @@ class Content extends Model
 
     public function getPrev() {
         return $this->where('id', '<', $this->id)->orderBy('id','desc')->first();
+    }
+
+    public function getTanggalAttribute()
+    {
+        return $this->created_at->format('d-m-Y');
     }
 }

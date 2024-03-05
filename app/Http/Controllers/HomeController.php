@@ -50,9 +50,9 @@ class HomeController extends Controller
             ->with('colors', $this->colors);
     }
 
-    public function post($id)
+    public function post($url)
     {
-        $content = Content::findOrFail($id);
+        $content = Content::where('url', '=', $url)->first();
         if (!$content || $content->published != 1) {
             abort('404');
         }
@@ -61,7 +61,7 @@ class HomeController extends Controller
         $content->views++;
         $content->save();
 
-        $related = Content::where('topic', '=', $content->topic)->where('id', '!=', $id)->where('published', '=', 1)->orderBy('created_at', 'DESC')->skip(0)->take(5)->get();
+        $related = Content::where('topic', '=', $content->topic)->where('id', '!=', $content->id)->where('published', '=', 1)->orderBy('created_at', 'DESC')->skip(0)->take(5)->get();
         // $popular = Content::where('published', '=', 1)->orderBy('views')->skip(0)->take(5)->get();
 
         return view('public.post')

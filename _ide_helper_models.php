@@ -66,10 +66,12 @@ namespace App\Models{
  * @property string $title
  * @property string $desc
  * @property string $topic
+ * @property string|null $thumbnail
  * @property int $views
  * @property bool $published
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $tanggal
  * @method static \Illuminate\Database\Eloquent\Builder|Content newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Content newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Content query()
@@ -77,6 +79,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content wherePublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereTopic($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Content whereUpdatedAt($value)

@@ -75,7 +75,7 @@
                                     <a href="{{ route('topic', ['topic' => $p->topic]) }}" class="{{ $colors[$p->topic] }}-color">{{ $p->topic }}</a>
                                 </span>
                                 <h4 class="post-title">
-                                    <a href="{{ route('post', ['id' => $p->id]) }}">{{ $p->title }}</a>
+                                    <a href="{{ route('post', ['url' => $p->url]) }}">{{ $p->title }}</a>
                                 </h4>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                     <a href="{{ route('topic', ['topic' => $b->topic]) }}" class="{{ $colors[$b->topic] }}-color"> {{ $b->topic }}</a>
                                 </span>
                                 <h4 class="post-title">
-                                    <a href="{{ route('post', ['id' => $b->id]) }}">{{ $b->title }}</a>
+                                    <a href="{{ route('post', ['url' => $b->url]) }}">{{ $b->title }}</a>
                                 </h4>
                             </div>
                         </div>

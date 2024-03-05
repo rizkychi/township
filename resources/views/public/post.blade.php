@@ -70,7 +70,7 @@
 						<div class="post-navigation clearfix mb-3">
 							<div class="post-previous float-left">
 								@if ($prev)
-                                    <a href="{{ route('post', ['id' => $prev->id]) }}">
+                                    <a href="{{ route('post', ['url' => $prev->url]) }}">
                                         <img src="{{ $prev->thumbnail }}" alt="">
                                         <span>Baca Sebelumnya</span>
                                         <p>
@@ -81,7 +81,7 @@
 							</div>
 							<div class="post-next float-right">
 								@if ($next)
-                                    <a href="{{ route('post', ['id' => $next->id]) }}">
+                                    <a href="{{ route('post', ['url' => $next->url]) }}">
                                         <img src="{{ $next->thumbnail }}" alt="">
                                         <span>Baca Selanjutnya</span>
                                         <p>
@@ -194,13 +194,13 @@
                                     <div class="item">
                                         <a class="post-cat ts-{{ $colors[$rel->topic] }}-bg" href="{{ route('topic', ['topic' => $rel->topic]) }}">{{ $rel->topic }}</a>
                                         <div class="ts-post-thumb">
-                                            <a href="{{ route('post', ['id' => $rel->id]) }}">
+                                            <a href="{{ route('post', ['url' => $rel->url]) }}">
                                                 <img class="img-fluid image-popular" src="{{ $rel->thumbnail }}" alt="">
                                             </a>
                                         </div>
                                         <div class="post-content">
                                             <h3 class="post-title">
-                                                <a href="{{ route('post', ['id' => $rel->id]) }}">{{ $rel->title }}</a>
+                                                <a href="{{ route('post', ['url' => $rel->url]) }}">{{ $rel->title }}</a>
                                             </h3>
                                             <span class="post-date-info">
                                                 <i class="fa fa-clock-o"></i>

@@ -39,14 +39,14 @@
                                     <div class="col-md-4 pr-0" style="min-height: 180px;">
                                         <div class="ts-post-thumb mb-0" style="background-image: url({{ $l->thumbnail }})">
                                             <a href="{{ route('topic', ['topic' => $l->topic]) }}" class="post-cat ts-{{ $colors[$l->topic] }}-bg">{{ $l->topic }}</a>
-                                            <a href="{{ route('post', ['id' => $l->id]) }}" class="d-inline-block h-100 w-100">
+                                            <a href="{{ route('post', ['url' => $l->url]) }}" class="d-inline-block h-100 w-100">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-md-8 pl-0" style="min-height: 180px;">
                                         <div class="d-flex flex-column post-content ts-white-bg py-3 px-4 h-100">
                                             <h3 class="post-title md">
-                                                <a href="{{ route('post', ['id' => $l->id]) }}">{{ $l->title }}</a>
+                                                <a href="{{ route('post', ['url' => $l->url]) }}">{{ $l->title }}</a>
                                             </h3>
                                             <ul class="post-meta-info mb-2">
                                                 <li>

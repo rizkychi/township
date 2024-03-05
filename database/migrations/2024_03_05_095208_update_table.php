@@ -15,6 +15,7 @@ class UpdateTable extends Migration
     {
         Schema::table('content', function($table) {
             $table->string('thumbnail')->nullable()->after('topic');
+            $table->string('url')->nullable()->after('topic');
         });
     }
 

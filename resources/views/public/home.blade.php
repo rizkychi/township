@@ -74,14 +74,14 @@
                                     <div class="item">
                                         <a class="post-cat ts-{{ $colors[$pop->topic] }}-bg" href="{{ route('topic', ['topic' => $pop->topic]) }}">{{ $pop->topic }}</a>
                                         <div class="ts-post-thumb">
-                                            <a href="{{ route('post', ['id' => $pop->id]) }}">
+                                            <a href="{{ route('post', ['url' => $pop->url]) }}">
                                                 <img class="img-fluid image-popular" src="{{ $pop->thumbnail }}"
                                                     alt="">
                                             </a>
                                         </div>
                                         <div class="post-content">
                                             <h3 class="post-title">
-                                                <a href="{{ route('post', ['id' => $pop->id]) }}">{{ $pop->title }}</a>
+                                                <a href="{{ route('post', ['url' => $pop->url]) }}">{{ $pop->title }}</a>
                                             </h3>
                                             <span class="post-date-info">
                                                 <i class="fa fa-clock-o"></i>
@@ -107,14 +107,14 @@
                                     <div class="ts-grid-box ts-grid-content">
                                         <a class="post-cat ts-{{ $colors[$late->topic] }}-bg" href="{{ route('topic', ['topic' => $late->topic]) }}">{{ $late->topic }}</a>
                                         <div class="ts-post-thumb">
-                                            <a href="{{ route('post', ['id' => $late->id]) }}">
+                                            <a href="{{ route('post', ['url' => $late->url]) }}">
                                                 <img class="img-fluid image-thumb" src="{{ $late->thumbnail }}" height="200px"
                                                     alt="">
                                             </a>
                                         </div>
                                         <div class="post-content">
                                             <h3 class="post-title md">
-                                                <a href="{{ route('post', ['id' => $late->id]) }}">{{ $late->title }}</a>
+                                                <a href="{{ route('post', ['url' => $late->url]) }}">{{ $late->title }}</a>
                                             </h3>
                                             <ul class="post-meta-info">
                                                 <li class="author-name">

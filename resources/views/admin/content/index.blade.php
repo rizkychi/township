@@ -30,9 +30,10 @@
           <thead class="thead-light">
             <tr>
               <th>No</th>
-              <th>Judul</th>
+              <th style="min-width: 250px">Judul</th>
               <th>Topik</th>
               <th>Jumlah Tayangan</th>
+              <th>Tanggal</th>
               <th>Published</th>
               <th>Action</th>
             </tr>
@@ -73,6 +74,10 @@
         {
           data: 'views',
           name: 'views'
+        },
+        {
+          data: 'tanggal',
+          name: 'tanggal'
         },
         {
           data: 'published',

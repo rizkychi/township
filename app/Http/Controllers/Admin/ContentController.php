@@ -63,6 +63,18 @@ class ContentController extends Controller
         $cont->thumbnail = $this->getThumbnail($request->desc);
         $cont->published = $request->published == 'on' ? 1 : 0;
 
+        // url 
+        $title_url = preg_replace("/[^a-zA-Z0-9\s+]+/", '', $cont->title);
+        $title_url = strtolower(str_replace(' ', '-', $title_url));
+        $url = date('Y-m-') . $title_url;
+
+        $exist = Content::where('url', 'LIKE', '%'.$url.'%')->get();
+        if ($exist) {
+            $url = $url . '-' . $exist->count();
+        }
+
+        $cont->url = $url;
+
         // Store into database
         if ($cont->save()) {
             return redirect()->route('admin.content.index')->with('success', 'Penambahan ' . $this->title . ' baru berhasil');
@@ -151,7 +163,7 @@ class ContentController extends Controller
     public function json(Request $request)
     {
         if ($request->ajax()) {
-            $data = Content::all();
+            $data = Content::orderBy('created_at', 'DESC')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
