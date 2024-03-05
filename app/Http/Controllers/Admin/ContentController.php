@@ -141,18 +141,6 @@ class ContentController extends Controller
         $cont->thumbnail = $this->getThumbnail($request->desc);
         $cont->published = $request->published == 'on' ? 1 : 0;
 
-        // url 
-        $title_url = preg_replace("/[^a-zA-Z0-9\s+]+/", '', $cont->title);
-        $title_url = strtolower(str_replace(' ', '-', $title_url));
-        $url = date('Y-m-') . $title_url;
-
-        $exist = Content::where('url', 'LIKE', '%'.$url.'%')->get();
-        if ($exist->count() > 0) {
-            $url = $url . '-' . $exist->count();
-        }
-
-        $cont->url = $url;
-
         if ($cont->update()) {
             return redirect()->route('admin.content.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
         } else {
