@@ -65,8 +65,12 @@
         .header-middle.v2 {
             background-image: linear-gradient(to right, #46686A 50%, #FDF7DF 50%);
         }
+        #featured-slider-5 .item::before {
+            background: rgba(0, 0, 0, 0.1);
+        }
     </style>
 
+    @stack('styles')
 </head>
 
 <body class="body-color">
@@ -190,6 +194,9 @@
                                 @endforeach
                                 <li class="{{ \Route::is('register') ? 'active' : '' }} d-none">
                                     <a href="{{ route('register') }}">Pendaftaran Anggota</a>
+                                </li>
+                                <li class="{{ \Route::is('member') ? 'active' : '' }}">
+                                    <a href="{{ route('member') }}">Member</a>
                                 </li>
                             </ul>
                             <!--nav menu end-->

@@ -53,6 +53,8 @@
       height: 120px;
     }
   </style>
+
+  @stack('styles')
 </head>
 
 <body>

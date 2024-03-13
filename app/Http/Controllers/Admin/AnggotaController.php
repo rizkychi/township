@@ -61,6 +61,8 @@ class AnggotaController extends Controller
         $mem->status = $request->status;
         $mem->keterangan = $request->keterangan;
 
+        $mem->avatar = $this->uploadAvatar($request);
+
         // Store into database
         if ($mem->save()) {
             return redirect()->route('admin.anggota.index')->with('success', 'Penambahan ' . $this->title . ' baru berhasil');
@@ -124,6 +126,8 @@ class AnggotaController extends Controller
         $mem->status = $request->status;
         $mem->keterangan = $request->keterangan;
 
+        $mem->avatar = $this->uploadAvatar($request);
+
         if ($mem->update()) {
             return redirect()->route('admin.anggota.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
         } else {
@@ -178,5 +182,20 @@ class AnggotaController extends Controller
         $anggota = Anggota::findOrFail($request->id);
         echo json_encode($anggota);
         exit;
+    }
+
+    function uploadAvatar($request) {
+        if ($request->has('base64_foto')) {
+            $fileName = 'avatar_' . now()->timestamp . '.jpeg';
+    
+            $img = file_get_contents($request->base64_foto);
+            
+            \Storage::disk('uploads')->put('/media/avatar/'.$fileName, $img);
+
+            $avatar = '/media/avatar/'.$fileName;
+        } else {
+            $avatar = null;
+        }
+        return $avatar;
     }
 }

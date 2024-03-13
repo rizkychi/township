@@ -32,44 +32,57 @@ $formtype = isset($data) ? 'Edit' : 'Tambah';
           {{ method_field('PUT') }}
           @endif
           <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="form-control-label" for="id_lokal">ID Lokal</label>
-                <input type="text" name="id_lokal" class="form-control" id="id_lokal" placeholder="" value="{{ old('id_lokal', @$data->id_lokal) ?? '#' }}">
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="form-control-label" for="kode_reg">ID_NAS KODE_REG</label>
-                <input type="text" name="kode_reg" class="form-control" id="kode_reg" placeholder="ID_NAS KODE_REG" value="{{ old('kode_reg', @$data->kode_reg) }}">
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="form-control-label" for="no_hp">No. HP (Whatsapp)</label>
-                <input type="text" name="no_hp" class="form-control" id="no_hp" placeholder="No. HP" value="{{ old('no_hp', @$data->no_hp) }}">
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="form-control-label" for="tgl_reg_tksci">Tanggal Registrasi TKSCI</label>
-                <input type="date" name="tgl_reg_tksci" class="form-control" id="tgl_reg_tksci" placeholder="Tanggal" value="{{ old('tgl_reg_tksci', @$data->tgl_reg_tksci) }}">
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="form-control-label" for="status">Status</label>
-                <select class="form-control" id="status" name="status" data-toggle="select">
-                  @foreach ($statuses as $key => $val)
-                    <option value="{{ $key }}" {{ old('status', @$data->status) == $key ? 'selected':''}}>{{ $val }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
             <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="id_lokal">ID Lokal</label>
+                    <input type="text" name="id_lokal" class="form-control" id="id_lokal" placeholder="" value="{{ old('id_lokal', @$data->id_lokal) ?? '#' }}">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="kode_reg">ID_NAS KODE_REG</label>
+                    <input type="text" name="kode_reg" class="form-control" id="kode_reg" placeholder="ID_NAS KODE_REG" value="{{ old('kode_reg', @$data->kode_reg) }}">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="no_hp">No. HP (Whatsapp)</label>
+                    <input type="text" name="no_hp" class="form-control" id="no_hp" placeholder="No. HP" value="{{ old('no_hp', @$data->no_hp) }}">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="tgl_reg_tksci">Tanggal Registrasi TKSCI</label>
+                    <input type="date" name="tgl_reg_tksci" class="form-control" id="tgl_reg_tksci" placeholder="Tanggal" value="{{ old('tgl_reg_tksci', @$data->tgl_reg_tksci) }}">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="status">Status</label>
+                    <select class="form-control" id="status" name="status" data-toggle="select">
+                      @foreach ($statuses as $key => $val)
+                        <option value="{{ $key }}" {{ old('status', @$data->status) == $key ? 'selected':''}}>{{ $val }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="keterangan">Keterangan</label>
+                    <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Keterangan" value="{{ old('keterangan', @$data->keterangan) }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
               <div class="form-group">
-                <label class="form-control-label" for="keterangan">Keterangan</label>
-                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Keterangan" value="{{ old('keterangan', @$data->keterangan) }}">
+                <label class="form-control-label" for="file_foto">Foto</label>
+                <input type="file" name="file_foto" class="form-control" id="file_foto" accept="image/jpg,image/jpeg" value="{{ old('file_foto') }}">
+                <input type="hidden" name="base64_foto" id="base64_foto" value="{{ old('base64_foto') }}">
+                <img class="rounded mx-auto d-block mt-2 w-75" id="thumb_foto" src="{{ old('base64_foto', @$data->avatar) ?? 'https://bootdey.com/img/Content/avatar/avatar1.png' }}">
               </div>
             </div>
           </div>
@@ -147,4 +160,98 @@ $formtype = isset($data) ? 'Edit' : 'Tambah';
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="modal_foto" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Upload Foto Anggota</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="img-container">
+                  <img class="w-100" id="image_foto" style="max-height: calc(100vh - 250px)">
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+              <button type="button" class="btn btn-primary" id="crop_foto">Upload</button>
+          </div>
+      </div>
+  </div>
+</div>
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    $(function() {
+        var ava_foto = document.getElementById('thumb_foto');
+        var image_foto = document.getElementById('image_foto');
+        var input_foto = document.getElementById('file_foto');
+        var crop_foto = document.getElementById('crop_foto');
+        var base64_foto = document.getElementById('base64_foto');
+
+        var $modal_foto = $('#modal_foto');
+        var cropper;
+
+        input_foto.addEventListener('change', function (e) {
+            var files = e.target.files;
+            var done = function (url) {
+                image_foto.src = url;
+                $modal_foto.modal('show');
+            };
+
+            if (files && files.length > 0) {
+                let file = files[0];
+
+                reader = new FileReader();
+                reader.onload = function (e) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        $modal_foto.on('shown.bs.modal', function () {
+            cropper = new Cropper(image_foto, {
+                aspectRatio: 256/256,
+                viewMode: 2,
+                autoCropArea: 1
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper.destroy();
+            cropper = null;
+        });
+
+        crop_foto.addEventListener('click', function () {
+            var canvas;
+            $modal_foto.modal('hide');
+
+            if (cropper) {
+                canvas = cropper.getCroppedCanvas({
+                    width: 256,
+                    height: 256,
+                });
+                ava_foto.src = canvas.toDataURL('image/jpeg');
+                base64_foto.value = canvas.toDataURL('image/jpeg');
+            }
+        });
+    });
+</script>
+@endpush
+
+@push('styles')
+  <style>
+    .cropper-view-box {
+      border-radius: 50%;
+    }
+    .cropper-face {
+      background-color:inherit !important;
+    }
+    .cropper-dashed {
+      display: none;
+    }
+  </style>
+@endpush

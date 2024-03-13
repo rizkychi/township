@@ -140,7 +140,7 @@ class HomeController extends Controller
 
     public function member()
     {
-        $list = Anggota::orderBy('created_at', 'DESC')->paginate(10);
+        $list = Anggota::orderBy('id', 'ASC')->paginate(10);
 
         return view('public.member')
             ->with('list', $list)
