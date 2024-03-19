@@ -126,7 +126,10 @@ class AnggotaController extends Controller
         $mem->status = $request->status;
         $mem->keterangan = $request->keterangan;
 
-        $mem->avatar = $this->uploadAvatar($request);
+        $ava = $this->uploadAvatar($request);
+        if ($mem->avatar == null || $ava != null) {
+            $mem->avatar = $this->uploadAvatar($request);
+        }
 
         if ($mem->update()) {
             return redirect()->route('admin.anggota.index')->with('success', 'Perubahan ' . $this->title . ' berhasil');
