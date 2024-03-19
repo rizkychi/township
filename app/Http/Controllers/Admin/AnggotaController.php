@@ -185,7 +185,7 @@ class AnggotaController extends Controller
     }
 
     function uploadAvatar($request) {
-        if ($request->has('base64_foto')) {
+        if ($request->has('base64_foto') && $request->base64_foto != '') {
             $fileName = 'avatar_' . now()->timestamp . '.jpeg';
     
             $img = file_get_contents($request->base64_foto);
