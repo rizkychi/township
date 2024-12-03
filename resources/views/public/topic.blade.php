@@ -37,7 +37,7 @@
                             @foreach ($list as $l)
                                 <div class="row mb-20">
                                     <div class="col-md-4 pr-0" style="min-height: 180px;">
-                                        <div class="ts-post-thumb mb-0" style="background-image: url({{ $l->thumbnail }})">
+                                        <div class="ts-post-thumb mb-0" style="background-image: url('{{ $l->thumbnail }}')">
                                             <a href="{{ route('topic', ['topic' => $l->topic]) }}" class="post-cat ts-{{ $colors[$l->topic] }}-bg">{{ $l->topic }}</a>
                                             <a href="{{ route('post', ['url' => $l->url]) }}" class="d-inline-block h-100 w-100">
                                             </a>
