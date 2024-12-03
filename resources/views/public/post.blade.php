@@ -24,6 +24,19 @@
 						<li>{{ Str::limit($content->title, 30, '...') }}</li>
 					</ol>
 					<!-- breadcump end-->
+					
+					<!-- ads -->
+                    @if ($ad_top->active == 1)
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="banner-ad border rounded shadow p-2 mb-3">
+                                <a href="{{ $ad_top->url ?? '#' }}" target="_blank">
+                                    <img src="{{ $ad_top->image ?? 'https://via.placeholder.com/1000x120' }}" class="img-fluid rounded" alt="Iklan Atas">
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                    <!-- ads end -->
+
 					<div class="ts-grid-box content-wrapper single-post">
 						<div class="entry-header">
 							<div class="category-name-list">
@@ -67,6 +80,18 @@
 						</div>
 						<!-- post content area-->
 						
+						<!-- ads -->
+						@if ($ad_bot->active == 1)
+							<div class="d-flex flex-column align-items-center">
+								<div class="banner-ad border rounded shadow p-2 mb-3">
+									<a href="{{ $ad_bot->url ?? '#' }}" target="_blank">
+										<img src="{{ $ad_bot->image ?? 'https://via.placeholder.com/1000x120' }}" class="img-fluid rounded" alt="Iklan Bawah">
+									</a>
+								</div>
+							</div>
+						@endif
+						<!-- ads end -->
+
 						<div class="post-navigation clearfix mb-3">
 							<div class="post-previous float-left">
 								@if ($prev)

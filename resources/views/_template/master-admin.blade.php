@@ -84,7 +84,7 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           @php
-            $home = $anggota = $content = $enrollment = $banner = '';
+            $home = $anggota = $content = $enrollment = $banner = $ads = '';
             if (Route::is('admin.anggota.*'))
               $anggota = 'active';
             else if (Route::is('admin.content.*'))
@@ -93,6 +93,8 @@
               $enrollment = 'active';
             else if (Route::is('admin.banner.*'))
               $banner = 'active';
+            else if (Route::is('admin.ads.*'))
+              $ads = 'active';
             else
               $home = 'active';
           @endphp
@@ -123,8 +125,14 @@
             </li>
             <li class="nav-item">
               <a class="nav-link {{ $banner }}" href="{{ route('admin.banner.index') }}">
-                <i class="fas fa-image text-danger"></i>
+                <i class="fas fa-images text-danger"></i>
                 <span class="nav-link-text">Banner</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ $ads }}" href="{{ route('admin.ads.index') }}">
+                <i class="fas fa-star" style="color: #f1c40f"></i>
+                <span class="nav-link-text">Iklan</span>
               </a>
             </li>
           </ul>

@@ -37,8 +37,7 @@
                 <form action="#" method="post">
                     <div class="form-group">
                         <input type="email" name="email" id="newsletter-form-email"
-                            class="form-control form-control-lg" placeholder="E-mail"
-                            autocomplete="off">
+                            class="form-control form-control-lg" placeholder="E-mail" autocomplete="off">
                         <button class="btn btn-primary">Subscribe</button>
                     </div>
                 </form>
@@ -51,8 +50,7 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation">
-                <a class="active" href="#home" aria-controls="home" role="tab"
-                    data-toggle="tab">
+                <a class="active" href="#home" aria-controls="home" role="tab" data-toggle="tab">
                     Pengumuman
                 </a>
             </li>
@@ -72,7 +70,8 @@
                             <img class="d-flex sidebar-img" src="{{ $p->thumbnail }}" alt="">
                             <div class="media-body">
                                 <span class="post-tag">
-                                    <a href="{{ route('topic', ['topic' => $p->topic]) }}" class="{{ $colors[$p->topic] }}-color">{{ $p->topic }}</a>
+                                    <a href="{{ route('topic', ['topic' => $p->topic]) }}"
+                                        class="{{ $colors[$p->topic] }}-color">{{ $p->topic }}</a>
                                 </span>
                                 <h4 class="post-title">
                                     <a href="{{ route('post', ['url' => $p->url]) }}">{{ $p->title }}</a>
@@ -93,7 +92,8 @@
                             <img class="d-flex sidebar-img" src="{{ $b->thumbnail }}" alt="">
                             <div class="media-body">
                                 <span class="post-tag">
-                                    <a href="{{ route('topic', ['topic' => $b->topic]) }}" class="{{ $colors[$b->topic] }}-color"> {{ $b->topic }}</a>
+                                    <a href="{{ route('topic', ['topic' => $b->topic]) }}"
+                                        class="{{ $colors[$b->topic] }}-color"> {{ $b->topic }}</a>
                                 </span>
                                 <h4 class="post-title">
                                     <a href="{{ route('post', ['url' => $b->url]) }}">{{ $b->title }}</a>
@@ -109,4 +109,25 @@
         <!-- tab content end-->
     </div>
     <!-- widgets end-->
+
+    <div class="widgets">
+        <div class="d-flex flex-column align-items-center">
+            @if ($ad_sidetop->active == 1)
+                <div class="banner-ad border rounded shadow p-2 mb-3">
+                    <a href="{{ $ad_sidetop->url ?? '#' }}" target="_blank">
+                        <img src="{{ $ad_sidetop->image ?? 'https://via.placeholder.com/300x250' }}" class="img-fluid rounded" alt="Iklan Samping 1">
+                    </a>
+                </div>
+            @endif
+            @if ($ad_sidebot->active == 1)
+                <div class="banner-ad border rounded shadow p-2 mb-3">
+                    <a href="{{ $ad_sidebot->url ?? '#' }}" target="_blank">
+                        <img src="{{ $ad_sidebot->image ?? 'https://via.placeholder.com/300x250' }}" class="img-fluid rounded" alt="Iklan Samping 2">
+                    </a>
+                </div>
+            @endif
+        </div>
+    </div>
+    <!-- widgets end-->
+
 </div>

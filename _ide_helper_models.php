@@ -12,6 +12,17 @@
 
 namespace App\Models{
 /**
+ * App\Models\Ads
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads query()
+ */
+	class Ads extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Anggota
  *
  * @property int $id
@@ -29,6 +40,7 @@ namespace App\Models{
  * @property string|null $tgl_reg_tksci
  * @property string|null $status
  * @property string|null $keterangan
+ * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $status_label
@@ -38,6 +50,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota query()
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereAlamat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Anggota whereIdLokal($value)

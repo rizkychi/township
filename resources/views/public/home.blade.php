@@ -67,7 +67,21 @@
         <div class="container">
 
             <div class="row">
+
                 <div class="col-lg-9">
+
+                    <!-- ads -->
+                    @if ($ad_top->active == 1)
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="banner-ad border rounded shadow p-2 mb-3">
+                                <a href="{{ $ad_top->url ?? '#' }}" target="_blank">
+                                    <img src="{{ $ad_top->image ?? 'https://via.placeholder.com/1000x120' }}" class="img-fluid rounded" alt="Iklan Atas">
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                    <!-- ads end -->
+                    
                     <div class="ts-grid-box most-populer-item">
                         <h2 class="ts-title">Paling Populer</h2>
 
@@ -137,6 +151,18 @@
                             @endforeach
                         @endif
                     </div>
+
+                    <!-- ads -->
+                    @if ($ad_bot->active == 1)
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="banner-ad border rounded shadow p-2 mb-3">
+                                <a href="{{ $ad_bot->url ?? '#' }}" target="_blank">
+                                    <img src="{{ $ad_bot->image ?? 'https://via.placeholder.com/1000x120' }}" class="img-fluid rounded" alt="Iklan Bawah">
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                    <!-- ads end -->
                 </div>
                 <div class="col-lg-3">
                     @include('_template.master-sidebar')

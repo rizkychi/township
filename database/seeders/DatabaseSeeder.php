@@ -36,5 +36,12 @@ class DatabaseSeeder extends Seeder
                 'status' => 'aktif'
             ]
         ]);
+
+        DB::table('ads')->insert([
+            ['image' => null, 'url' => null, 'position' => 'Atas', 'active' => 1],
+            ['image' => null, 'url' => null, 'position' => 'Bawah', 'active' => 1],
+            ['image' => null, 'url' => null, 'position' => 'Samping 1', 'active' => 1],
+            ['image' => null, 'url' => null, 'position' => 'Samping 2', 'active' => 1]
+        ]);
     }
 }

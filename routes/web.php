@@ -63,6 +63,13 @@ Route::middleware('web')->group(function () {
         });
         Route::resource('banner', 'Admin\BannerController', ['as' => 'admin'])->except(['destroy']);
 
+        // Ads
+        Route::prefix('ads')->group(function () {
+            Route::get('json', 'Admin\AdsController@json')->name('admin.ads.json');
+            Route::get('{ads}/delete', 'Admin\AdsController@delete')->name('admin.ads.delete');
+        });
+        Route::resource('ads', 'Admin\AdsController', ['as' => 'admin'])->except(['destroy', 'create', 'store']);
+
         // Image Upload
         Route::post('image_upload', 'Admin\ImageUploadController@storeImage')->name('image.upload');
     });

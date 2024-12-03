@@ -68,6 +68,23 @@
         #featured-slider-5 .item::before {
             background: rgba(0, 0, 0, 0.1);
         }
+        
+        .banner-ad {
+            position: relative;
+            overflow: hidden;
+        }
+        .banner-ad::after {
+            content: 'Iklan';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            padding: 0px 6px;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            user-select: none;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
     </style>
 
     @stack('styles')

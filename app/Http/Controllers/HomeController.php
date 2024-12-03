@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Anggota;
 use App\Models\Banner;
 use App\Models\Content;
@@ -30,11 +31,16 @@ class HomeController extends Controller
         $popular = Content::where('published', '=', 1)->orderBy('views', 'DESC')->skip(0)->take(5)->get();
         $latest = Content::where('published', '=', 1)->orderBy('created_at', 'DESC')->skip(0)->take(6)->get();
 
+        $ad_top = Ads::where('position', '=', 'Atas')->first();
+        $ad_bot = Ads::where('position', '=', 'Bawah')->first();
+
         return view('public.home')
             ->with('banner', $banner)
             ->with('popular', $popular)
             ->with('latest', $latest)
-            ->with('colors', $this->colors);
+            ->with('colors', $this->colors)
+            ->with('ad_top', $ad_top)
+            ->with('ad_bot', $ad_bot);
     }
 
     public function topic($topic)
@@ -67,13 +73,18 @@ class HomeController extends Controller
         $related = Content::where('topic', '=', $content->topic)->where('id', '!=', $content->id)->where('published', '=', 1)->orderBy('created_at', 'DESC')->skip(0)->take(5)->get();
         // $popular = Content::where('published', '=', 1)->orderBy('views')->skip(0)->take(5)->get();
 
+        $ad_top = Ads::where('position', '=', 'Atas')->first();
+        $ad_bot = Ads::where('position', '=', 'Bawah')->first();
+
         return view('public.post')
             ->with('content', $content)
             ->with('next', $content->getNext())
             ->with('prev', $content->getPrev())
             ->with('colors', $this->colors)
             // ->with('popular', $popular)
-            ->with('related', $related);
+            ->with('related', $related)
+            ->with('ad_top', $ad_top)
+            ->with('ad_bot', $ad_bot);
     }
 
     public function search(Request $request)
