@@ -18,6 +18,7 @@ class HomeController extends Controller
         'Berita' => 'blue',
         'Event' => 'pink',
         'Artikel' => 'green',
+        'Arsip' => 'blue-dark'
     ];
 
     /**

@@ -11,6 +11,7 @@ class Topic extends Model
         'Pengumuman',
         'Event',
         'Artikel',
+        'Arsip'
     ];
 
     public function getList() {

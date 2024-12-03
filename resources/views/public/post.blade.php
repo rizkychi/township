@@ -74,7 +74,7 @@
 									<span class="tie-dropcap">A</span> farmers in the US’s South—faced with continued failure in their efforts to run on successful farms their
 									launched a lawsuit claiming that “white racism” is to the blame for their inability to produce crop yields.
 								</p> --}}
-								{!! $content->desc !!}
+								{!! html_entity_decode($content->desc) !!}
 							</div>
 							<!-- entry content end-->
 						</div>

@@ -14,9 +14,23 @@ namespace App\Models{
 /**
  * App\Models\Ads
  *
+ * @property int $id
+ * @property string|null $image
+ * @property string|null $url
+ * @property string $position
+ * @property bool $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Ads newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Ads newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Ads query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ads whereUrl($value)
  */
 	class Ads extends \Eloquent {}
 }
