@@ -25,6 +25,7 @@ Route::middleware('web')->group(function () {
     Route::get('/register', 'HomeController@registerForm')->name('register');
     Route::post('/register', 'HomeController@register');
     Route::get('/member', 'HomeController@member')->name('member');
+    Route::get('/catalog', 'HomeController@catalog')->name('catalog');
 
     // Admin Route
     Route::prefix('dash')->middleware('auth')->group(function () {
@@ -62,6 +63,14 @@ Route::middleware('web')->group(function () {
             Route::get('{banner}/delete', 'Admin\BannerController@delete')->name('admin.banner.delete');
         });
         Route::resource('banner', 'Admin\BannerController', ['as' => 'admin'])->except(['destroy']);
+
+        // Catalog
+        Route::prefix('catalog')->group(function () {
+            Route::get('json', 'Admin\CatalogController@json')->name('admin.catalog.json');
+            Route::get('{catalog}/delete', 'Admin\CatalogController@delete')->name('admin.catalog.delete');
+            Route::get('catalog/image/{id}/delete', 'Admin\CatalogController@imageDelete')->name('admin.catalog.image.delete');
+        });
+        Route::resource('catalog', 'Admin\CatalogController', ['as' => 'admin'])->except(['destroy']);
 
         // Ads
         Route::prefix('ads')->group(function () {

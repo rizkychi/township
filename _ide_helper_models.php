@@ -110,6 +110,35 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Catalog
+ *
+ * @property int $id
+ * @property string $product_name
+ * @property string $product_price
+ * @property string $product_description
+ * @property string $product_owner
+ * @property string|null $product_url
+ * @property bool $published
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereProductDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereProductName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereProductOwner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereProductPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereProductUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog wherePublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Catalog whereUpdatedAt($value)
+ */
+	class Catalog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Content
  *
  * @property int $id

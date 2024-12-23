@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anggota;
+use App\Models\Banner;
+use App\Models\Catalog;
 use App\Models\Content;
 use Illuminate\Http\Request;
 
@@ -17,14 +19,23 @@ class HomeController extends Controller
     public function index()
     {
         $views = Content::all()->sum('views');
-        $content = Content::all()->count();
+        $content = Content::where('topic', '!=', 'Arsip')->count();
         $member = Anggota::all()->count();
         $cars = Anggota::whereNotNull('kendaraan_jenis')->count();
+        $banner = Banner::all()->count();
+        $history = Content::where('topic', '=', 'Arsip')->count();
+        $product = Catalog::all()->count();
+        $owner = Catalog::distinct('product_owner')->count('product_owner');
+
         return view('admin.home')
         ->with('views', $views)
         ->with('content', $content)
         ->with('member', $member)
-        ->with('cars', $cars);
+        ->with('cars', $cars)
+        ->with('banner', $banner)
+        ->with('history', $history)
+        ->with('product', $product)
+        ->with('owner', $owner);
     }
 
     /**

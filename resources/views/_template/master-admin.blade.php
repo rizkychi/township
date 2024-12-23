@@ -84,53 +84,61 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           @php
-            $home = $anggota = $content = $enrollment = $banner = $ads = '';
+            $act = [];
             if (Route::is('admin.anggota.*'))
-              $anggota = 'active';
+              $act['anggota'] = 'active';
             else if (Route::is('admin.content.*'))
-              $content = 'active';
+              $act['content'] = 'active';
             else if (Route::is('admin.enrollment.*'))
-              $enrollment = 'active';
+              $act['enrollment'] = 'active';
             else if (Route::is('admin.banner.*'))
-              $banner = 'active';
+              $act['banner'] = 'active';
             else if (Route::is('admin.ads.*'))
-              $ads = 'active';
+              $act['ads'] = 'active';
+            else if (Route::is('admin.catalog.*'))
+              $act['catalog'] = 'active';
             else
-              $home = 'active';
+              $act['home'] = 'active';
           @endphp
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link {{ $home }}" href="{{ route('admin.home') }}">
+              <a class="nav-link {{ @$act['home'] }}" href="{{ route('admin.home') }}">
                 <i class="fas fa-home text-primary"></i>
                 <span class="nav-link-text">Home</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ $anggota }}" href="{{ route('admin.anggota.index') }}">
+              <a class="nav-link {{ @$act['anggota'] }}" href="{{ route('admin.anggota.index') }}">
                 <i class="fas fa-users text-info"></i>
                 <span class="nav-link-text">Anggota</span>
               </a>
             </li>
             <li class="nav-item d-none">
-              <a class="nav-link {{ $enrollment }}" href="{{ route('admin.enrollment.index') }}">
+              <a class="nav-link {{ @$act['enrollment'] }}" href="{{ route('admin.enrollment.index') }}">
                 <i class="fas fa-user-plus text-success"></i>
                 <span class="nav-link-text">Pendaftaran</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ $content }}" href="{{ route('admin.content.index') }}">
+              <a class="nav-link {{ @$act['content'] }}" href="{{ route('admin.content.index') }}">
                 <i class="fas fa-copy text-warning"></i>
                 <span class="nav-link-text">Konten</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ $banner }}" href="{{ route('admin.banner.index') }}">
+              <a class="nav-link {{ @$act['banner'] }}" href="{{ route('admin.banner.index') }}">
                 <i class="fas fa-images text-danger"></i>
                 <span class="nav-link-text">Banner</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ $ads }}" href="{{ route('admin.ads.index') }}">
+              <a class="nav-link {{ @$act['catalog'] }}" href="{{ route('admin.catalog.index') }}">
+                <i class="fas fa-shopping-cart text-success"></i>
+                <span class="nav-link-text">Katalog</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ @$act['ads'] }}" href="{{ route('admin.ads.index') }}">
                 <i class="fas fa-star" style="color: #f1c40f"></i>
                 <span class="nav-link-text">Iklan</span>
               </a>

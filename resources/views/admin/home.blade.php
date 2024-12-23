@@ -90,6 +90,90 @@
             </div>
         </div>
     </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Banner</h5>
+                        <span class="h2 font-weight-bold mb-0"><?= number_format($banner) ?></span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                            <i class="fas fa-images"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Jumlah banner terpasang</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Histori</h5>
+                        <span class="h2 font-weight-bold mb-0"><?= number_format($history) ?></span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                            <i class="fas fa-archive"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Jumlah histori konten</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Produk</h5>
+                        <span class="h2 font-weight-bold mb-0"><?= number_format($product) ?></span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Jumlah produk dalam katalog</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Owner Produk</h5>
+                        <span class="h2 font-weight-bold mb-0"><?= number_format($owner) ?></span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Jumlah owner produk katalog</span>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 

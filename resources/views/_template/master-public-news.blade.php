@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6HZCZNGMN"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N6HZCZNGMN');
+    </script>
+    
     <!-- Basic Page Needs =====================================-->
     <meta charset="utf-8">
 
@@ -214,6 +224,9 @@
                                 </li>
                                 <li class="{{ \Route::is('register') ? 'active' : '' }} d-none">
                                     <a href="{{ route('register') }}">Pendaftaran Anggota</a>
+                                </li>
+                                <li class="{{ \Route::is('catalog') ? 'active' : '' }}">
+                                    <a href="{{ route('catalog') }}">Katalog</a>
                                 </li>
                                 <li class="{{ \Route::is('member') ? 'active' : '' }}">
                                     <a href="{{ route('member') }}">Member</a>

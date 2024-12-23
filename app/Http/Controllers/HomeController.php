@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ads;
 use App\Models\Anggota;
 use App\Models\Banner;
+use App\Models\Catalog;
 use App\Models\Content;
 use App\Models\Enrollment;
 use App\Models\Topic;
@@ -158,4 +159,35 @@ class HomeController extends Controller
             ->with('list', $list)
             ->with('colors', $this->colors);
     }
+
+    public function catalog(Request $request)
+    {
+        $q = $request->q;
+        $list = Catalog::where('published', '=', 1)
+            ->where(function ($query) use ($q) {
+                $query
+                    ->where('product_name', 'LIKE', "%$q%")
+                    ->orWhere('product_owner', 'LIKE', "%$q%")
+                    ->orWhere('product_description', 'LIKE', "%$q%");
+            })
+            ->orderBy('created_at', 'DESC')
+            ->paginate(15)
+            ->appends(request()->query());
+
+        $ad_top = Ads::where('position', '=', 'Atas')->first();
+        $ad_bot = Ads::where('position', '=', 'Bawah')->first();
+
+        return view('public.catalog')
+            ->with('list', $list)
+            ->with('colors', $this->colors)
+            ->with('query', $request->q)
+            ->with('ad_top', $ad_top)
+            ->with('ad_bot', $ad_bot);
+    }
+
+    public function catalogDetails($id) {
+        $cat = Catalog::findOrFail($id);
+        $cat->catalog_images = $cat->catalog_images;
+        return response()->json($cat);
+        }
 }
