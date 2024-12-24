@@ -39,9 +39,15 @@
 
 					<div class="ts-grid-box content-wrapper single-post">
 						<div class="entry-header">
-							<div class="category-name-list">
+							<div class="category-name-list d-flex justify-content-between align-items-center">
 								<span>
 									<a href="{{ route('topic', ['topic' => $content->topic]) }}" class="post-cat ts-{{ $colors[$content->topic] }}-bg">{{ $content->topic }}</a>
+								</span>
+								<span>
+									<!-- Social Share Button -->
+									<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+									<div class="commonninja_component pid-c73d4cdb-a270-4d5c-968b-9426517dbc86"></div>
+									<!-- Social Share Button end -->
 								</span>
 							</div>
 							<h2 class="post-title lg">{{ $content->title }}</h2>
@@ -79,6 +85,8 @@
 							<!-- entry content end-->
 						</div>
 						<!-- post content area-->
+
+						
 						
 						<!-- ads -->
 						@if ($ad_bot->active == 1)
@@ -92,7 +100,12 @@
 						@endif
 						<!-- ads end -->
 
-						<div class="post-navigation clearfix mb-3">
+						<!-- Social Share Button -->
+						<script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+						<div class="commonninja_component pid-c73d4cdb-a270-4d5c-968b-9426517dbc86"></div>
+						<!-- Social Share Button end -->
+
+						<div class="post-navigation clearfix mb-3 mt-3">
 							<div class="post-previous float-left">
 								@if ($prev)
                                     <a href="{{ route('post', ['url' => $prev->url]) }}">
@@ -119,97 +132,14 @@
 						<!-- post navigation end-->
 					</div>
 					<!--single post end -->
-					<div class="comments-form ts-grid-box d-none">
 
-						<h3 class="comments-counter">03 Comments</h3>
-						<ul class="comments-list">
-							<li>
-								<div class="comment">
-									<img class="comment-avatar float-left" alt="" src="images/avater/author.png">
-									<div class="comment-body">
-										<div class="meta-data"><span class="float-right"><a class="comment-reply" href="#"><i 	class="fa fa-mail-reply-all"></i> Reply</a></span>
-											<span class="comment-author">Demon Lion</span><span class="comment-date">October 31, 2018</span>
-										</div>
-										<div class="comment-content">
-											<p>There’s such a thing as “too much information”, especially for the companies scaling out their sales operations. That’s why Attentive was help sales teams </p>
-										</div>
-									</div>
-								</div>
-								<!-- Comments end-->
-								<ul class="comments-reply">
-									<li>
-										<div class="comment">
-											<img class="comment-avatar float-left" alt="" src="images/avater/author2.png">
-											<div class="comment-body reply-bg">
-												<div class="meta-data"><span class="float-right"><a class="comment-reply" href="#"><i class="fa fa-mail-reply-all"></i> Reply</a></span>
-													<span class="comment-author">Henry kendel</span><span class="comment-date">October 31, 2018</span>
-												</div>
-												<div class="comment-content">
-													<p>There’s such a thing as “too much information”, especially for the companies scaling out their sales operations. That’s why Attentive was born</p>
-												</div>
-											</div>
-										</div>
-										<!-- Comments end-->
-									</li>
-								</ul>
-								<!-- comments-reply end-->
-							</li>
-							<!-- Comments-list li end-->
-							<li>
-								<div class="comment last">
-									<img class="comment-avatar float-left" alt="" src="images/avater/author.png">
-									<div class="comment-body">
-										<div class="meta-data"><span class="float-right"><a class="comment-reply" href="#"><i 	class="fa fa-mail-reply-all"></i> Reply</a></span>
-											<span class="comment-author">Demon Lion</span><span class="comment-date">October 31, 2018</span>
-										</div>
-										<div class="comment-content">
-											<p>Cras lectus sed arcus volutpat tincidun met diam placerat.Vis solum numquam. That’s why Attentive help sales teams </p>
-										</div>
-									</div>
-								</div><!-- Comments last end-->
-							</li>
-						</ul>
-						<!-- Comments-list ul end-->
-
-						<h3 class="comment-reply-title">Add Comment</h3>
-						<form role="form" class="ts-form">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<input class="form-control" name="name" id="name" placeholder="Your Name" type="text" required="">
-									</div>
-									<!-- form group end-->
-									<div class="form-group">
-										<input class="form-control" name="email" id="email" placeholder="Your Email" type="email" required="">
-									</div>
-									<!-- form group end-->
-									<div class="form-group">
-										<input class="form-control" placeholder="Your Website" type="text" required="">
-									</div>
-									<!-- form group end-->
-								</div>
-								<!-- Col end -->
-								<div class="col-md-6">
-									<div class="form-group">
-										<textarea class="form-control msg-box" id="message" placeholder="Your Comment" rows="10" required=""></textarea>
-									</div>
-								</div>
-								<!-- Col end -->
-								<div class="col-md-12">
-									<p class="comment-form-cookies-consent">
-										<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes">
-										<label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
-									</p>
-								</div>
-							</div>
-							<!-- Form row end -->
-							<div class="clearfix">
-								<button class="comments-btn btn btn-primary" type="submit">Post Comment</button>
-							</div>
-						</form>
-						<!-- Form end -->
-					</div>
+					@if (env('DISQUS_ENABLED', false))
+						<div class="comments-form ts-grid-box">
+							<div id="disqus_thread"></div>
+						</div>
+					@endif
 					<!-- comment form end-->
+					
 					<div class="ts-grid-box mb-30">
 						<h2 class="ts-title">Konten Relevan</h2>
 
