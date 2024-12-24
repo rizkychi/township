@@ -22,6 +22,11 @@
                     <span class="ts-{{ $colors['Artikel'] }}-bg">{{ $count_post }}</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('topic', ['topic' => 'Arsip']) }}">History
+                    <span class="ts-{{ $colors['Arsip'] }}-bg">{{ $count_arsip }}</span>
+                </a>
+            </li>
 
         </ul>
     </div>
