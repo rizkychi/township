@@ -273,10 +273,12 @@
             // Hide Loading Spinner
             $('#loading').remove();
 
+            console.log(data);
+
             // Update Product Details
             $('#modal_product_owner').text(data.product_owner);
             $('#modal_product_name').text(data.product_name);
-            $('#modal_product_description').text(data.product_description);
+            $('#modal_product_description').html(data.product_description.replace(/\r?\n/g, '<br>'));
             $('#modal_product_price').text(
                 new Intl.NumberFormat('id-ID',{
                     style: 'currency',
