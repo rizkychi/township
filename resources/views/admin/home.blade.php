@@ -175,6 +175,13 @@
         </div>
     </div>
 </div>
+@if(env('APP_LOOKER'))
+<div class="row">
+    <div class="col-md-12">
+        <iframe width="100%" height="1200" src="{{ env('APP_LOOKER') }}" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+    </div>
+</div>
+@endif
 @endsection
 
 @section('content')
