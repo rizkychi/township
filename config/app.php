@@ -168,7 +168,7 @@ return [
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        Yajra\Disqus\DisqusServiceProvider::class,
+        // Yajra\Disqus\DisqusServiceProvider::class,
 
 
         /*
