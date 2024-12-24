@@ -108,8 +108,9 @@
                                 <div class="row d-none" id="productDetails">
                                     <!-- Image Carousel -->
                                     <div class="col-md-6 mb-2 d-flex justify-content-center">
-                                        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
+                                        <div id="productCarousel" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner" id="productImages">
+                                                <!-- Images will be appended here -->
                                                
                                             </div>
                                             <ol class="carousel-indicators">
@@ -316,5 +317,29 @@
             $('#productDetails').removeClass('d-none');
         });
     }
+
+    // Viewer
+    window.addEventListener('DOMContentLoaded', function () {
+        var galley = document.getElementById('productImages');
+        var viewer;
+        var options = {
+            toolbar: false,
+            rotatable: false,
+            title: false,
+            navbar: false,
+        };
+
+        $('#productModal').on('shown.bs.modal', function (e) {
+            // WARNING: should ignore Viewer's `shown` event here.
+            if(e.namespace === 'bs.modal') {
+                viewer = new Viewer(galley, options);
+            }
+        }).on('hidden.bs.modal', function (e) {
+            // WARNING: should ignore Viewer's `hidden` event here.
+            if(e.namespace === 'bs.modal') {
+                viewer.destroy();
+            }
+        });
+    });
   </script>
 @endpush

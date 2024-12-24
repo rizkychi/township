@@ -47,7 +47,6 @@
     <!-- Cropper -->
     <link rel="stylesheet" href="{{ asset('/src/css/cropper.min.css') }}">
 
-
     <!-- navigation -->
     <link rel="stylesheet" href="{{ asset('/src/css/news/navigation.css') }}">
 
@@ -56,11 +55,15 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('/src/css/news/style.css') }}">
+
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('/src/css/news/colors/color-13.css') }}">
 
     <!-- Responsive -->
     <link rel="stylesheet" href="{{ asset('/src/css/news/responsive.css') }}">
+
+    <!-- Viewer -->
+    <link rel="stylesheet" href="{{ asset('/src/css/news/viewer.css') }}">
 
     <!-- Custom -->
     <link rel="stylesheet" href="{{ asset('/src/css/custom.css') }}">
@@ -69,9 +72,9 @@
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
- <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
- <![endif]-->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <style>
         .header-middle.v2 {
@@ -324,7 +327,11 @@
     <!-- smooth scroling -->
     <script src="{{ asset('/src/js/news/smoothscroll.js') }}"></script>
 
+    <!-- Main JS -->
     <script src="{{ asset('/src/js/news/main.js') }}"></script>
+
+    <!-- Viewer JS -->
+    <script src="{{ asset('/src/js/news/viewer.min.js') }}"></script>
 
     @stack('scripts')
 </body>
